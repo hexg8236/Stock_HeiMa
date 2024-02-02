@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.newhand.stock.pojo.mapper.StockMarketIndexInfoMapper">
+
+    <resultMap id="BaseResultMap" type="top.newhand.stock.pojo.entity.StockMarketIndexInfo">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="marketCode" column="market_code" jdbcType="CHAR"/>
+            <result property="marketName" column="market_name" jdbcType="VARCHAR"/>
+            <result property="preClosePoint" column="pre_close_point" jdbcType="DECIMAL"/>
+            <result property="openPoint" column="open_point" jdbcType="DECIMAL"/>
+            <result property="curPoint" column="cur_point" jdbcType="DECIMAL"/>
+            <result property="minPoint" column="min_point" jdbcType="DECIMAL"/>
+            <result property="maxPoint" column="max_point" jdbcType="DECIMAL"/>
+            <result property="tradeAmount" column="trade_amount" jdbcType="BIGINT"/>
+            <result property="tradeVolume" column="trade_volume" jdbcType="DECIMAL"/>
+            <result property="curTime" column="cur_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,market_code,market_name,
+        pre_close_point,open_point,cur_point,
+        min_point,max_point,trade_amount,
+        trade_volume,cur_time
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from stock_market_index_info
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from stock_market_index_info
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.newhand.stock.pojo.entity.StockMarketIndexInfo" useGeneratedKeys="true">
+        insert into stock_market_index_info
+        ( id,market_code,market_name
+        ,pre_close_point,open_point,cur_point
+        ,min_point,max_point,trade_amount
+        ,trade_volume,cur_time)
+        values (#{id,jdbcType=BIGINT},#{marketCode,jdbcType=CHAR},#{marketName,jdbcType=VARCHAR}
+        ,#{preClosePoint,jdbcType=DECIMAL},#{openPoint,jdbcType=DECIMAL},#{curPoint,jdbcType=DECIMAL}
+        ,#{minPoint,jdbcType=DECIMAL},#{maxPoint,jdbcType=DECIMAL},#{tradeAmount,jdbcType=BIGINT}
+        ,#{tradeVolume,jdbcType=DECIMAL},#{curTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.newhand.stock.pojo.entity.StockMarketIndexInfo" useGeneratedKeys="true">
+        insert into stock_market_index_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="marketCode != null">market_code,</if>
+                <if test="marketName != null">market_name,</if>
+                <if test="preClosePoint != null">pre_close_point,</if>
+                <if test="openPoint != null">open_point,</if>
+                <if test="curPoint != null">cur_point,</if>
+                <if test="minPoint != null">min_point,</if>
+                <if test="maxPoint != null">max_point,</if>
+                <if test="tradeAmount != null">trade_amount,</if>
+                <if test="tradeVolume != null">trade_volume,</if>
+                <if test="curTime != null">cur_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="marketCode != null">#{marketCode,jdbcType=CHAR},</if>
+                <if test="marketName != null">#{marketName,jdbcType=VARCHAR},</if>
+                <if test="preClosePoint != null">#{preClosePoint,jdbcType=DECIMAL},</if>
+                <if test="openPoint != null">#{openPoint,jdbcType=DECIMAL},</if>
+                <if test="curPoint != null">#{curPoint,jdbcType=DECIMAL},</if>
+                <if test="minPoint != null">#{minPoint,jdbcType=DECIMAL},</if>
+                <if test="maxPoint != null">#{maxPoint,jdbcType=DECIMAL},</if>
+                <if test="tradeAmount != null">#{tradeAmount,jdbcType=BIGINT},</if>
+                <if test="tradeVolume != null">#{tradeVolume,jdbcType=DECIMAL},</if>
+                <if test="curTime != null">#{curTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="top.newhand.stock.pojo.entity.StockMarketIndexInfo">
+        update stock_market_index_info
+        <set>
+                <if test="marketCode != null">
+                    market_code = #{marketCode,jdbcType=CHAR},
+                </if>
+                <if test="marketName != null">
+                    market_name = #{marketName,jdbcType=VARCHAR},
+                </if>
+                <if test="preClosePoint != null">
+                    pre_close_point = #{preClosePoint,jdbcType=DECIMAL},
+                </if>
+                <if test="openPoint != null">
+                    open_point = #{openPoint,jdbcType=DECIMAL},
+                </if>
+                <if test="curPoint != null">
+                    cur_point = #{curPoint,jdbcType=DECIMAL},
+                </if>
+                <if test="minPoint != null">
+                    min_point = #{minPoint,jdbcType=DECIMAL},
+                </if>
+                <if test="maxPoint != null">
+                    max_point = #{maxPoint,jdbcType=DECIMAL},
+                </if>
+                <if test="tradeAmount != null">
+                    trade_amount = #{tradeAmount,jdbcType=BIGINT},
+                </if>
+                <if test="tradeVolume != null">
+                    trade_volume = #{tradeVolume,jdbcType=DECIMAL},
+                </if>
+                <if test="curTime != null">
+                    cur_time = #{curTime,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="top.newhand.stock.pojo.entity.StockMarketIndexInfo">
+        update stock_market_index_info
+        set 
+            market_code =  #{marketCode,jdbcType=CHAR},
+            market_name =  #{marketName,jdbcType=VARCHAR},
+            pre_close_point =  #{preClosePoint,jdbcType=DECIMAL},
+            open_point =  #{openPoint,jdbcType=DECIMAL},
+            cur_point =  #{curPoint,jdbcType=DECIMAL},
+            min_point =  #{minPoint,jdbcType=DECIMAL},
+            max_point =  #{maxPoint,jdbcType=DECIMAL},
+            trade_amount =  #{tradeAmount,jdbcType=BIGINT},
+            trade_volume =  #{tradeVolume,jdbcType=DECIMAL},
+            cur_time =  #{curTime,jdbcType=TIMESTAMP}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>
