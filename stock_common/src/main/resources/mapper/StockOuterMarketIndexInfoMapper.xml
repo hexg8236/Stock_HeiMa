@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.newhand.stock.pojo.mapper.StockOuterMarketIndexInfoMapper">
+
+    <resultMap id="BaseResultMap" type="top.newhand.stock.pojo.entity.StockOuterMarketIndexInfo">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="marketCode" column="market_code" jdbcType="CHAR"/>
+            <result property="marketName" column="market_name" jdbcType="VARCHAR"/>
+            <result property="curPoint" column="cur_point" jdbcType="DECIMAL"/>
+            <result property="updown" column="updown" jdbcType="DECIMAL"/>
+            <result property="rose" column="rose" jdbcType="DECIMAL"/>
+            <result property="curTime" column="cur_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,market_code,market_name,
+        cur_point,updown,rose,
+        cur_time
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from stock_outer_market_index_info
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from stock_outer_market_index_info
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.newhand.stock.pojo.entity.StockOuterMarketIndexInfo" useGeneratedKeys="true">
+        insert into stock_outer_market_index_info
+        ( id,market_code,market_name
+        ,cur_point,updown,rose
+        ,cur_time)
+        values (#{id,jdbcType=BIGINT},#{marketCode,jdbcType=CHAR},#{marketName,jdbcType=VARCHAR}
+        ,#{curPoint,jdbcType=DECIMAL},#{updown,jdbcType=DECIMAL},#{rose,jdbcType=DECIMAL}
+        ,#{curTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.newhand.stock.pojo.entity.StockOuterMarketIndexInfo" useGeneratedKeys="true">
+        insert into stock_outer_market_index_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="marketCode != null">market_code,</if>
+                <if test="marketName != null">market_name,</if>
+                <if test="curPoint != null">cur_point,</if>
+                <if test="updown != null">updown,</if>
+                <if test="rose != null">rose,</if>
+                <if test="curTime != null">cur_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="marketCode != null">#{marketCode,jdbcType=CHAR},</if>
+                <if test="marketName != null">#{marketName,jdbcType=VARCHAR},</if>
+                <if test="curPoint != null">#{curPoint,jdbcType=DECIMAL},</if>
+                <if test="updown != null">#{updown,jdbcType=DECIMAL},</if>
+                <if test="rose != null">#{rose,jdbcType=DECIMAL},</if>
+                <if test="curTime != null">#{curTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="top.newhand.stock.pojo.entity.StockOuterMarketIndexInfo">
+        update stock_outer_market_index_info
+        <set>
+                <if test="marketCode != null">
+                    market_code = #{marketCode,jdbcType=CHAR},
+                </if>
+                <if test="marketName != null">
+                    market_name = #{marketName,jdbcType=VARCHAR},
+                </if>
+                <if test="curPoint != null">
+                    cur_point = #{curPoint,jdbcType=DECIMAL},
+                </if>
+                <if test="updown != null">
+                    updown = #{updown,jdbcType=DECIMAL},
+                </if>
+                <if test="rose != null">
+                    rose = #{rose,jdbcType=DECIMAL},
+                </if>
+                <if test="curTime != null">
+                    cur_time = #{curTime,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="top.newhand.stock.pojo.entity.StockOuterMarketIndexInfo">
+        update stock_outer_market_index_info
+        set 
+            market_code =  #{marketCode,jdbcType=CHAR},
+            market_name =  #{marketName,jdbcType=VARCHAR},
+            cur_point =  #{curPoint,jdbcType=DECIMAL},
+            updown =  #{updown,jdbcType=DECIMAL},
+            rose =  #{rose,jdbcType=DECIMAL},
+            cur_time =  #{curTime,jdbcType=TIMESTAMP}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>
