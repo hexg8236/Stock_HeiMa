@@ -1,0 +1,31 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: cache
+  datasource:
+    druid:
+      username: stock
+      password: 123456
+      url: jdbc:mysql://192.168.1.4:3306/stock?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai
+      driver-class-name: com.mysql.jdbc.Driver
+      # 初始化时建立物理连接的个数。初始化发生在显示调用 init 方法，或者第一次 getConnection 时
+      initial-size: 6
+      # 最大连接池数量
+      max-active: 20
+      # 获取连接时最大等待时间，单位毫秒。配置了 maxWait 之后，缺省启用公平锁，
+      # 并发效率会有所下降，如果需要可以通过配置 useUnfairLock 属性为 true 使用非公平锁。
+      max-wait: 60000
+      # 最小连接池数量
+      min-idle: 2
+mybatis:
+  type-aliases-package: top.newhand.stock.pojo
+  mapper-locations: mapper/*xml
+  configuration:
+    # 开启驼峰映射
+    map-underscore-to-camel-case: true
+pagehelper:
+  # 指定分页数据库类型（方言）
+  helper-dialect: mysql
+  # 合理查询超过最大页，则查询最后一页
+  reasonable: true

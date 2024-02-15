@@ -1,4 +1,4 @@
-package top.newhand.stock.pojo.mapper;
+package top.newhand.stock.mapper;
 
 import top.newhand.stock.pojo.entity.StockBlockRtInfo;
 

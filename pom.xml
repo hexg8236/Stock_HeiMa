@@ -17,6 +17,7 @@
     </description>
     <modules>
         <module>stock_common</module>
+        <module>stock_backend</module>
     </modules>
 
     <properties>
