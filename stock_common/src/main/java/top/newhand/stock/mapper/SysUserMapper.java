@@ -1,5 +1,6 @@
-package top.newhand.stock.pojo.mapper;
+package top.newhand.stock.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import top.newhand.stock.pojo.entity.SysUser;
 
 /**
@@ -21,5 +22,7 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    SysUser findByUserName(@Param("name") String userName);
 
 }
