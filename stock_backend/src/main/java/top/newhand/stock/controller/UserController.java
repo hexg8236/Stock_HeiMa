@@ -20,7 +20,7 @@ import java.util.Map;
  **/
 @RestController
 @RequestMapping("/api")
-@Api(value = "用户认证相关接口定义",tags = "用户功能-用户登录功能")
+@Api(value = "用户认证相关接口",tags = "用户功能-用户登录功能")
 public class UserController {
 
     @Autowired

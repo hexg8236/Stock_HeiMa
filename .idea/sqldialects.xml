@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockBlockRtInfoMapper.xml" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysUserMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockBlockRtInfoMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockMarketIndexInfoMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysUserMapper.xml" dialect="MySQL" />
     <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>
