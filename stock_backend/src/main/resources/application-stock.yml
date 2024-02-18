@@ -1,0 +1,20 @@
+# 配置股票相关的参数
+stock:
+  # A股
+  inner:
+    # 上证ID
+    - sh000001
+    #  深证ID
+    - sz399001
+  # 外盘
+  outer:
+    # 道琼斯
+    - int_dji
+    # 纳斯达克
+    - int_nasdaq
+    # 恒生
+    - int_hangseng
+    # 日经指数
+    - int_nikkei
+    # 新加坡
+    - b_FSSTI

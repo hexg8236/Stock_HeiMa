@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   profiles:
-    active: cache
+    active: cache, stock
   datasource:
     druid:
       username: stock

@@ -1,6 +1,11 @@
 package top.newhand.stock.mapper;
 
+import org.apache.ibatis.annotations.Param;
+import top.newhand.stock.pojo.domain.StockBlockDomain;
 import top.newhand.stock.pojo.entity.StockBlockRtInfo;
+
+import java.util.Date;
+import java.util.List;
 
 /**
 * @author hexg8
@@ -22,4 +27,5 @@ public interface StockBlockRtInfoMapper {
 
     int updateByPrimaryKey(StockBlockRtInfo record);
 
+    List<StockBlockDomain> sectorAll(@Param("timePoint") Date lastDate);
 }
