@@ -27,5 +27,10 @@ public interface StockBlockRtInfoMapper {
 
     int updateByPrimaryKey(StockBlockRtInfo record);
 
+    /**
+     * @Description 查询板块信息数据接口
+     * @Param [lastDate] 最新时间
+     * @Date 14:31 2024/2/18
+     **/
     List<StockBlockDomain> sectorAll(@Param("timePoint") Date lastDate);
 }
