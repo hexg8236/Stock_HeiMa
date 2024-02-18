@@ -17,9 +17,7 @@
       </schema-mapping>
     </data-source>
     <data-source name="0@192.168.1.4" uuid="af0b9c05-f44b-4452-a63c-30c37850ca2d">
-      <database-info product="Redis Standalone" version="6.2.6" jdbc-version="4.2" driver-name="Redis JDBC Driver" driver-version="1.4" dbms="REDIS" exact-version="6.2.6" exact-driver-version="1.4">
-        <jdbc-catalog-is-schema>true</jdbc-catalog-is-schema>
-      </database-info>
+      <database-info product="Redis Standalone" version="6.2.6" jdbc-version="4.2" driver-name="Redis JDBC Driver" driver-version="1.4" dbms="REDIS" exact-version="6.2.6" exact-driver-version="1.4" />
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <secret-storage>master_key</secret-storage>
       <schema-mapping>

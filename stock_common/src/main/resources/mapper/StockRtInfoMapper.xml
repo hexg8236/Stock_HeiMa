@@ -31,6 +31,60 @@
         from stock_rt_info
         where  id = #{id,jdbcType=BIGINT} 
     </select>
+    <select id="getNewestStockInfo" resultType="top.newhand.stock.pojo.domain.StockUpdownDomain">
+        select
+            sri.trade_amount as tradeAmt,
+            sri.pre_close_price as preClosePrice,
+            (sri.max_price-sri.min_price)/sri.pre_close_price as amplitude,
+            sri.stock_code as code,
+            sri.stock_name as  name,
+            sri.cur_time as curDate,
+            sri.trade_volume as tradeVol,
+            sri.cur_price-sri.pre_close_price as increase,
+            (sri.cur_price-sri.pre_close_price) /pre_close_price as upDown,
+            sri.cur_price as tradePrice
+        from stock_rt_info as   sri
+        where sri.cur_time=#{timePoint}
+        order by upDown desc
+    </select>
+    <select id="getStockUpdownList" resultType="top.newhand.stock.pojo.domain.StockUpdownListDomain">
+        select
+            sri.trade_amount as tradeAmt,
+            sri.pre_close_price as preClosePrice,
+            (sri.max_price-sri.min_price)/sri.pre_close_price as amplitude,
+            sri.stock_code as code,
+            sri.stock_name as  name,
+            sri.cur_time as curDate,
+            sri.trade_volume as tradeVol,
+            sri.cur_price-sri.pre_close_price as increase,
+            (sri.cur_price-sri.pre_close_price) /pre_close_price as upDown,
+            sri.cur_price as tradePrice
+        from stock_rt_info as   sri
+        where sri.cur_time=#{timePoint}
+        order by increase desc
+        LIMIT 10;
+    </select>
+    <select id="getStockUpdownCount" resultType="java.util.Map">
+        select
+        date_format(tmp.time,'%Y%m%d%H%i') as time ,
+        count(*) as count
+        from (select
+        (sri.cur_price-sri.pre_close_price)/sri.pre_close_price as ud,
+        sri.cur_time as time
+        from stock_rt_info sri
+        where sri.cur_time BETWEEN #{openTime} and #{curTime}
+        having ud
+        <if test="flag==1">
+            >=0.1
+        </if>
+        <if test="flag==0">
+            &lt;=-0.1
+        </if>
+        )
+        as tmp
+        group by tmp.time
+        order by tmp.time asc
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from stock_rt_info
