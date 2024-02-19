@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import top.newhand.stock.pojo.domain.InnerMarketDomain;
 import top.newhand.stock.pojo.entity.StockMarketIndexInfo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,4 +34,11 @@ public interface StockMarketIndexInfoMapper {
      * @Date 14:32 2024/2/18
      **/
     List<InnerMarketDomain> getMarketInfo(@Param("marketIds") List<String> marketIds, @Param("timePoint") Date timePoint);
+
+    /**
+     * @Description 批量插入股票大盘信息
+     * @Param [list]
+     * @Date 21:26 2024/2/18
+     **/
+    int insertBatch(ArrayList<StockMarketIndexInfo> list);
 }

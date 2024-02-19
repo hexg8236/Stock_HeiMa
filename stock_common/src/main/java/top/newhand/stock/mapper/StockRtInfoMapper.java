@@ -49,4 +49,18 @@ public interface StockRtInfoMapper {
      * @Date 16:22 2024/2/18
      **/
     List<Map> getStockUpdownCount(@Param("openTime") Date openTime, @Param("curTime") Date curTime, @Param("flag") int flag);
+
+    /**
+     * @Description 获取最新板块信息
+     * @Param [curDate]
+     * @Date 15:31 2024/2/19
+     **/
+    List<StockUpdownDomain> getAllStockUpDownByTime(@Param("timePoint") Date curDate);
+
+    /**
+     * @Description 批量插入股票板块信息
+     * @Param [stockRtInfoList]
+     * @Date 15:32 2024/2/19
+     **/
+    int insertBatch(List<StockRtInfo> stockRtInfoList);
 }

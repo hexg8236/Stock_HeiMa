@@ -6,6 +6,8 @@ import top.newhand.stock.pojo.domain.StockUpdownListDomain;
 import top.newhand.stock.vo.R;
 import top.newhand.stock.vo.resp.PageResult;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -52,4 +54,11 @@ public interface StockService {
      * @Date 16:21 2024/2/18
      **/
     R<Map> getStockUpdownCount();
+
+    /**
+     * @Description 将指定页的股票数据导出到excel表下
+     * @Param [response, page, pageSize]
+     * @Date 16:54 2024/2/18
+     **/
+    void stockExport(HttpServletResponse response, Integer page, Integer pageSize) throws IOException;
 }

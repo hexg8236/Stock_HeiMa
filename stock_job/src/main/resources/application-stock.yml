@@ -1,0 +1,16 @@
+# 配置股票相关的参数
+stock:
+  inner: # 国内大盘ID
+    - sh000001 # 上证ID
+    - sz399001 #  深证ID
+  outer: # 外盘ID
+    - int_dji # 道琼斯
+    - int_nasdaq # 纳斯达克
+    - int_hangseng # 恒生
+    - int_nikkei # 日经指数
+    - b_TWSE # 台湾加权
+    - b_FSSTI # 新加坡
+  marketUrl: http://hq.sinajs.cn/list=
+  blockUrl: http://vip.stock.finance.sina.com.cn/q/view/newSinaHy.php
+
+

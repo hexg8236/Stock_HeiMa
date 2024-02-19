@@ -98,6 +98,21 @@
                 <if test="curTime != null">#{curTime,jdbcType=TIMESTAMP},</if>
         </trim>
     </insert>
+
+    <insert id="insertBatch">
+        insert into stock_market_index_info
+            (id,market_code,market_name,
+             pre_close_point, open_point,cur_point,
+             min_point, max_point, trade_amount, trade_volume,cur_time)
+        values
+        <foreach collection="list" item="smi" separator=",">
+            (#{smi.id,jdbcType=BIGINT},#{smi.marketCode,jdbcType=CHAR},#{smi.marketName,jdbcType=VARCHAR},
+             #{smi.preClosePoint,jdbcType=TIMESTAMP},#{smi.openPoint,jdbcType=DECIMAL}, #{smi.curPoint,jdbcType=DECIMAL},
+             #{smi.minPoint,jdbcType=DECIMAL},#{smi.maxPoint,jdbcType=DECIMAL},
+             #{smi.tradeAmount,jdbcType=BIGINT},#{smi.tradeVolume,jdbcType=BIGINT},#{smi.curTime,jdbcType=BIGINT}
+            )
+        </foreach>
+    </insert>
     <update id="updateByPrimaryKeySelective" parameterType="top.newhand.stock.pojo.entity.StockMarketIndexInfo">
         update stock_market_index_info
         <set>

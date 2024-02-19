@@ -38,4 +38,5 @@ public class CommonConfig {
     public IdWorker idWorker() {
         return new IdWorker(1l, 2l);
     }
+
 }

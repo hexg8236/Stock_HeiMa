@@ -1,15 +1,18 @@
 package top.newhand.stock.pojo.entity;
 
+import lombok.Builder;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * 国内大盘数据详情表
  * @TableName stock_market_index_info
  */
 @Data
+@Builder
 public class StockMarketIndexInfo implements Serializable {
     /**
      * 主键字段（无业务意义）

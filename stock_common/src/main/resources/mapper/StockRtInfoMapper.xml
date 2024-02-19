@@ -85,6 +85,20 @@
         group by tmp.time
         order by tmp.time asc
     </select>
+    <select id="getAllStockUpDownByTime" resultType="top.newhand.stock.pojo.domain.StockUpdownDomain">
+        select
+            sri.trade_amount as tradeAmt,
+            sri.pre_close_price as preClosePrice,
+            (sri.max_price-sri.min_price)/sri.pre_close_price as amplitude,
+            sri.stock_code as code,
+            sri.stock_name as  name,
+            sri.cur_time as curDate,
+            sri.trade_volume as tradeVol,
+            sri.cur_price-sri.pre_close_price as increase,
+            (sri.cur_price-sri.pre_close_price) /pre_close_price as upDown,
+            sri.cur_price as tradePrice        from stock_rt_info as sri
+        where sri.cur_time = #{timePoint}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from stock_rt_info
@@ -129,6 +143,18 @@
                 <if test="tradeVolume != null">#{tradeVolume,jdbcType=DECIMAL},</if>
                 <if test="curTime != null">#{curTime,jdbcType=TIMESTAMP},</if>
         </trim>
+    </insert>
+    <insert id="insertBatch">
+        insert into stock_rt_info(id, stock_code, stock_name, pre_close_price, open_price,
+                                  cur_price, min_price, max_price, trade_amount, trade_volume,cur_time)
+        values
+            <foreach collection="list" item="si" separator=",">
+            (#{si.id,jdbcType=BIGINT}, #{si.stockCode,jdbcType=CHAR}, #{si.stockName,jdbcType=VARCHAR}, #{si.preClosePrice,jdbcType=DECIMAL}, #{si.openPrice,jdbcType=DECIMAL},
+            #{si.curPrice,jdbcType=DECIMAL}, #{si.minPrice,jdbcType=DECIMAL}, #{si.maxPrice,jdbcType=DECIMAL}, #{si.tradeAmount,jdbcType=BIGINT}, #{si.tradeVolume,jdbcType=DECIMAL},
+             #{si.curTime,jdbcType=TIMESTAMP})
+            </foreach>
+
+
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="top.newhand.stock.pojo.entity.StockRtInfo">
         update stock_rt_info
