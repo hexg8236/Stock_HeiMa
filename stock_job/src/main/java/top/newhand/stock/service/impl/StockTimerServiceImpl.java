@@ -7,8 +7,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import top.newhand.stock.mapper.StockBlockRtInfoMapper;
 import top.newhand.stock.mapper.StockBusinessMapper;
 import top.newhand.stock.mapper.StockRtInfoMapper;
+import top.newhand.stock.pojo.entity.StockBlockRtInfo;
 import top.newhand.stock.pojo.entity.StockRtInfo;
 import top.newhand.stock.pojo.vo.StockInfoConfig;
 import top.newhand.stock.service.StockTimerService;
@@ -67,6 +69,9 @@ public class StockTimerServiceImpl implements StockTimerService {
     @Autowired
     private StockRtInfoMapper stockRtInfoMapper;
 
+    @Autowired
+    private StockBlockRtInfoMapper stockBlockRtInfoMapper;
+
     /**
      * @Description 获取股票所有CODE
      * @Param []
@@ -107,5 +112,21 @@ public class StockTimerServiceImpl implements StockTimerService {
             log.info("批量插入：{}条", i);
         });
 
+    }
+
+    @Override
+    public void getStockBlockRtIndex() {
+        // 1、获取请求路径
+        String blockUrl = stockInfoConfig.getBlockUrl();
+        // 2、设置公共请求对象
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Referer","https://finance.sina.com.cn/stock/");
+        headers.add("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        String responseBody = restTemplate.postForObject(blockUrl, entity, String.class);
+        List<StockBlockRtInfo> stockBlockRtInfos = parserStockInfoUtil.parse4StockBlock(responseBody);
+        log.info("数据量：{}",stockBlockRtInfos.size());
+        int count = stockBlockRtInfoMapper.insertBatch(stockBlockRtInfos);
+        log.info("批量插入：{}条",count);
     }
 }

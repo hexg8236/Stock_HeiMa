@@ -59,6 +59,11 @@
             <artifactId>easyexcel</artifactId>
             <version>3.0.4</version>
         </dependency>
+        <!--集成CaffeineCache依赖-->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
     </dependencies>
 
 

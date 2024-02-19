@@ -4,26 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8035e72c-3d9d-4a7c-8479-8a5a25923e8f" name="Changes" comment="数据采集-国内大盘数据采集功能，以及其他bug修改添加注释">
-      <change afterPath="$PROJECT_DIR$/stock_backend/src/test/java/top/newhand/TestStockBusinessMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/utils/ParseType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/utils/ParserStockInfoUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/StockTimerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/impl/StockTimerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_job/src/test/java/top/newhand/stock/TestStockService.java" afterDir="false" />
+    <list default="true" id="8035e72c-3d9d-4a7c-8479-8a5a25923e8f" name="Changes" comment="数据采集-个股数据收集功能开发">
+      <change afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/config/MqConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_job/src/main/resources/application-mq.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/config/CommonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/config/CommonConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockBusinessMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockBusinessMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockRtInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockRtInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/entity/StockBlockRtInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/entity/StockBlockRtInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/entity/StockOuterMarketIndexInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/entity/StockOuterMarketIndexInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/entity/StockRtInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/entity/StockRtInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockBusinessMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockBusinessMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockRtInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockRtInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/config/CommonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/config/CommonConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/StockTimerTaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/StockTimerTaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/impl/StockTimerTaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/impl/StockTimerTaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_job/src/test/java/top/newhand/stock/TestStockTimerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_job/src/test/java/top/newhand/stock/TestStockTimerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockBlockRtInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockBlockRtInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/utils/ParserStockInfoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/utils/ParserStockInfoUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockBlockRtInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockBlockRtInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_job/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_job/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/StockTimerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/StockTimerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/impl/StockTimerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/impl/StockTimerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_job/src/test/java/top/newhand/stock/TestStockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_job/src/test/java/top/newhand/stock/TestStockService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +94,7 @@
     "JUnit.TestRestTemplate.testRequestWithForm.executor": "Run",
     "JUnit.TestRestTemplate.testRequestWithJson.executor": "Run",
     "JUnit.TestRestTemplate.testRequestWithParam.executor": "Run",
+    "JUnit.TestStockService.testGetStockBlockRtIndex.executor": "Run",
     "JUnit.TestStockService.testGetStockRtIndex.executor": "Run",
     "JUnit.TestStockTimerService.testGetInnerMarketInfo.executor": "Run",
     "JUnit.TestStockTimerService.testGetStockIds.executor": "Run",
@@ -156,18 +150,18 @@
       <recent name="top.newhand.stock.pojo.domain" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestStockService.testGetStockRtIndex">
-    <configuration name="TestRegular.testRep2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="stock_backend" />
+  <component name="RunManager" selected="JUnit.TestStockService.testGetStockBlockRtIndex">
+    <configuration name="TestStockService.testGetStockBlockRtIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="stock_job" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="top.newhand.*" />
+          <option name="PATTERN" value="top.newhand.stock.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="top.newhand" />
-      <option name="MAIN_CLASS_NAME" value="top.newhand.TestRegular" />
-      <option name="METHOD_NAME" value="testRep2" />
+      <option name="PACKAGE_NAME" value="top.newhand.stock" />
+      <option name="MAIN_CLASS_NAME" value="top.newhand.stock.TestStockService" />
+      <option name="METHOD_NAME" value="testGetStockBlockRtIndex" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -237,6 +231,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="JobApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="stock_job" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.newhand.stock.JobApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Stock" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -248,11 +250,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestStockService.testGetStockBlockRtIndex" />
         <item itemvalue="JUnit.TestStockService.testGetStockRtIndex" />
         <item itemvalue="JUnit.TestStockTimerService.testPortion" />
         <item itemvalue="JUnit.TestStockTimerService.testGetStockIds" />
         <item itemvalue="JUnit.TestStockTimerService.testGetInnerMarketInfo" />
-        <item itemvalue="JUnit.TestRegular.testRep2" />
       </list>
     </recent_temporary>
   </component>
@@ -310,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708325534919</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="数据采集-个股数据收集功能开发">
+      <option name="closed" value="true" />
+      <created>1708329497766</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708329497766</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +354,8 @@
     <MESSAGE value="搭建Swagger环境，根据表反射出基础查询等信息，开发用户登录功能" />
     <MESSAGE value="修改git忽略配置文件" />
     <MESSAGE value="数据采集-国内大盘数据采集功能，以及其他bug修改添加注释" />
-    <option name="LAST_COMMIT_MESSAGE" value="数据采集-国内大盘数据采集功能，以及其他bug修改添加注释" />
+    <MESSAGE value="数据采集-个股数据收集功能开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="数据采集-个股数据收集功能开发" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -33,4 +33,11 @@ public interface StockBlockRtInfoMapper {
      * @Date 14:31 2024/2/18
      **/
     List<StockBlockDomain> sectorAll(@Param("timePoint") Date lastDate);
+
+    /**
+     * @Description 批量插入数据
+     * @Param [stockBlockRtInfos]
+     * @Date 16:42 2024/2/19
+     **/
+    int insertBatch(List<StockBlockRtInfo> stockBlockRtInfos);
 }

@@ -34,7 +34,7 @@ public class ParserStockInfoUtil {
      */
     public List parser4StockOrMarketInfo(String stockStr,Integer  type){
         //收集封装数据
-        List<Object> datas=new ArrayList<>();
+        List datas=new ArrayList<>();
         //合法判断
         if (Strings.isNullOrEmpty(stockStr)) {
             //返回空数组
