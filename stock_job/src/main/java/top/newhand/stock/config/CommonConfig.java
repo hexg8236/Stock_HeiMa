@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import top.newhand.stock.pojo.vo.StockInfoConfig;
 import top.newhand.stock.utils.IdWorker;
+import top.newhand.stock.utils.ParserStockInfoUtil;
 
 /**
  * @ClassName CommonConfig
@@ -26,6 +27,16 @@ public class CommonConfig {
     @Bean
     public IdWorker idWorker () {
         return new IdWorker();
+    }
+
+    /**
+     * 配置解析工具bean
+     * @param idWorker
+     * @return
+     */
+    @Bean
+    public ParserStockInfoUtil parserStockInfoUtil(IdWorker idWorker){
+        return new ParserStockInfoUtil(idWorker);
     }
 
 }

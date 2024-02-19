@@ -16,4 +16,5 @@ public interface StockTimerTaskService {
      * @Date 21:04 2024/2/18
      **/
     void getInnerMarketInfo();
+
 }

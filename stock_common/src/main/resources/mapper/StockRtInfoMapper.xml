@@ -144,6 +144,18 @@
                 <if test="curTime != null">#{curTime,jdbcType=TIMESTAMP},</if>
         </trim>
     </insert>
+    <insert id="insertBatch">
+        insert into stock_rt_info(id, stock_code, stock_name, pre_close_price, open_price,
+                                  cur_price, min_price, max_price, trade_amount, trade_volume,cur_time)
+        values
+            <foreach collection="list" item="si" separator=",">
+            (#{si.id,jdbcType=BIGINT}, #{si.stockCode,jdbcType=CHAR}, #{si.stockName,jdbcType=VARCHAR}, #{si.preClosePrice,jdbcType=DECIMAL}, #{si.openPrice,jdbcType=DECIMAL},
+            #{si.curPrice,jdbcType=DECIMAL}, #{si.minPrice,jdbcType=DECIMAL}, #{si.maxPrice,jdbcType=DECIMAL}, #{si.tradeAmount,jdbcType=BIGINT}, #{si.tradeVolume,jdbcType=DECIMAL},
+             #{si.curTime,jdbcType=TIMESTAMP})
+            </foreach>
+
+
+    </insert>
     <update id="updateByPrimaryKeySelective" parameterType="top.newhand.stock.pojo.entity.StockRtInfo">
         update stock_rt_info
         <set>

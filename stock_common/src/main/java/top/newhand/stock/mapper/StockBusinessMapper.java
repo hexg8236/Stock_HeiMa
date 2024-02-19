@@ -2,6 +2,8 @@ package top.newhand.stock.mapper;
 
 import top.newhand.stock.pojo.entity.StockBusiness;
 
+import java.util.List;
+
 /**
 * @author hexg8
 * @description 针对表【stock_business(主营业务表)】的数据库操作Mapper
@@ -21,5 +23,12 @@ public interface StockBusinessMapper {
     int updateByPrimaryKeySelective(StockBusiness record);
 
     int updateByPrimaryKey(StockBusiness record);
+
+    /**
+     * @Description 获取所有的股票code
+     * @Param []
+     * @Date 14:53 2024/2/19
+     **/
+    List<String> getStockIds();
 
 }

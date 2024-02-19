@@ -63,6 +63,9 @@ public class StockTimerTaskServiceImpl implements StockTimerTaskService {
      **/
     @Autowired
     private StockMarketIndexInfoMapper stockMarketIndexInfoMapper;
+    
+
+
 
     /**
      * @Description 获取国内大盘实时数据细腻系
