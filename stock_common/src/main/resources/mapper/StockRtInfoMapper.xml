@@ -85,6 +85,20 @@
         group by tmp.time
         order by tmp.time asc
     </select>
+    <select id="getAllStockUpDownByTime" resultType="top.newhand.stock.pojo.domain.StockUpdownDomain">
+        select
+            sri.trade_amount as tradeAmt,
+            sri.pre_close_price as preClosePrice,
+            (sri.max_price-sri.min_price)/sri.pre_close_price as amplitude,
+            sri.stock_code as code,
+            sri.stock_name as  name,
+            sri.cur_time as curDate,
+            sri.trade_volume as tradeVol,
+            sri.cur_price-sri.pre_close_price as increase,
+            (sri.cur_price-sri.pre_close_price) /pre_close_price as upDown,
+            sri.cur_price as tradePrice        from stock_rt_info as sri
+        where sri.cur_time = #{timePoint}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from stock_rt_info

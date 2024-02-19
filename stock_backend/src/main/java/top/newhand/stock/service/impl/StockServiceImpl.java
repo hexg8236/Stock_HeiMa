@@ -1,7 +1,10 @@
 package top.newhand.stock.service.impl;
 
+import com.alibaba.excel.EasyExcel;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,9 @@ import top.newhand.stock.vo.R;
 import top.newhand.stock.vo.ResponseCode;
 import top.newhand.stock.vo.resp.PageResult;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -34,6 +40,7 @@ import java.util.Map;
  * @Description 大盘数据服务
  **/
 @Service
+@Slf4j
 public class StockServiceImpl implements StockService {
 
     /**
@@ -167,5 +174,42 @@ public class StockServiceImpl implements StockService {
         mapInfo.put("downList",dwCounts);
         //5.返回结果
         return R.ok(mapInfo);
+    }
+
+    @Override
+    public void stockExport(HttpServletResponse response, Integer page, Integer pageSize) throws IOException {
+        //1.获取分页数据
+        Date lastDate = DateTimeUtil.getLastDate4Stock(DateTime.now()).toDate();
+        //TODO 伪造数据，后续删除
+        lastDate=DateTime.parse("2022-07-07 14:43:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+        PageHelper.startPage(page,pageSize);
+        List<StockUpdownDomain> infos=stockRtInfoMapper.getAllStockUpDownByTime(lastDate);
+        response.setCharacterEncoding("utf-8");
+        try {
+            //2.判断分页数据是否为空，为空则响应json格式的提示信息
+            if (CollectionUtils.isEmpty(infos)) {
+                R<Object> error = R.error(ResponseCode.NO_RESPONSE_DATA);
+                //将error转化成json格式字符串
+                String jsonData = new ObjectMapper().writeValueAsString(error);
+                //设置响应的数据格式 告知浏览器传入的数据格式
+                response.setContentType("application/json");
+                //设置编码格式
+                //            response.setCharacterEncoding("utf-8");
+                //响应数据
+                response.getWriter().write(jsonData);
+                return;
+            }
+            //3.调动EasyExcel数据导出
+            // 这里注意 有同学反应使用swagger 会导致各种问题，请直接用浏览器或者用postman
+            response.setContentType("application/vnd.ms-excel");
+//        response.setCharacterEncoding("utf-8");
+            // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
+            String fileName = URLEncoder.encode("股票涨幅数据表格", "UTF-8");
+            //指定excel导出时默认的文件名称，说白了就是告诉浏览器下载文件时默认的名称为：股票涨幅数据表格
+            response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
+            EasyExcel.write(response.getOutputStream(), StockUpdownDomain.class).sheet("股票涨幅信息").doWrite(infos);
+        } catch (Exception e) {
+            log.error("导出时间：{},当初页码：{}，导出数据量：{}，发生异常信息：{}",lastDate,page,pageSize,e.getMessage());
+        }
     }
 }

@@ -30,4 +30,18 @@ public class StockInfoConfig {
      * @Date 13:24 2024/2/18
      **/
     private List<String> outer;
+    
+    /**
+     * @Description 大盘参数获取Url
+     * @Param 
+     * @Date 20:40 2024/2/18
+     **/
+    private String marketUrl;
+    
+    /**
+     * @Description 板块参数获取URL
+     * @Param 
+     * @Date 21:04 2024/2/18
+     **/
+    private String blockUrl;
 }

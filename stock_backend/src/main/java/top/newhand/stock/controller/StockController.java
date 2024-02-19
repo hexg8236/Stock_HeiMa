@@ -13,6 +13,8 @@ import top.newhand.stock.service.StockService;
 import top.newhand.stock.vo.R;
 import top.newhand.stock.vo.resp.PageResult;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -84,5 +86,15 @@ public class StockController {
         return stockService.getStockUpdownCount();
     }
 
+
+    /**
+     * @Description 将指定页的股票数据导出到Excel下
+     * @Param [response, page, pageSize]
+     * @Date 16:53 2024/2/18
+     **/
+    @GetMapping("/stock/export")
+    public void stockExport(HttpServletResponse response, Integer page, Integer pageSize) throws IOException {
+        stockService.stockExport(response,page,pageSize);
+    }
 
 }

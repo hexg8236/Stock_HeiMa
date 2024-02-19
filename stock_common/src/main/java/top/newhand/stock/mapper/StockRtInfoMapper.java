@@ -49,4 +49,6 @@ public interface StockRtInfoMapper {
      * @Date 16:22 2024/2/18
      **/
     List<Map> getStockUpdownCount(@Param("openTime") Date openTime, @Param("curTime") Date curTime, @Param("flag") int flag);
+
+    List<StockUpdownDomain> getAllStockUpDownByTime(@Param("timePoint") Date curDate);
 }

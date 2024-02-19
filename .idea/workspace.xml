@@ -4,19 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8035e72c-3d9d-4a7c-8479-8a5a25923e8f" name="Changes" comment="修改git忽略配置文件">
-      <change afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/vo/resp/PageResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/domain/StockUpdownDomain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/domain/StockUpdownListDomain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9c2f14b9-caf0-479d-93c9-112e33cce5af.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9c2f14b9-caf0-479d-93c9-112e33cce5af.xml" afterDir="false" />
+    <list default="true" id="8035e72c-3d9d-4a7c-8479-8a5a25923e8f" name="Changes" comment="首页-涨停榜，涨停板接口功能开发">
+      <change afterPath="$PROJECT_DIR$/stock_backend/src/test/java/top/newhand/TestEasyExcel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_backend/src/test/java/top/newhand/TestRegular.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_job/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/config/CommonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/config/HttpClientConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/StockTimerTaskService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/impl/StockTimerTaskServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_job/src/main/resources/application-stock.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_job/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_job/src/test/java/top/newhand/stock/TestRestTemplate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_job/src/test/java/top/newhand/stock/TestStockTimerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/controller/StockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/controller/StockController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/StockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/StockService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/StockServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/StockServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockBlockRtInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockBlockRtInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockMarketIndexInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockMarketIndexInfoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockRtInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockRtInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/domain/StockUpdownDomain.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/domain/StockUpdownDomain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/entity/StockMarketIndexInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/entity/StockMarketIndexInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/vo/StockInfoConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/vo/StockInfoConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockMarketIndexInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockMarketIndexInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockRtInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockRtInfoMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,47 +93,59 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;HTTP Request.All in generated-requests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestPasswordEncoder.testDecode.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestPasswordEncoder.testPasswordEncoder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRedis.testRedis.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.stock_common [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.stock_common [package].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.Stock.executor&quot;: &quot;JRebel Executor&quot;,
-    &quot;Spring Boot.StockApp.executor&quot;: &quot;JRebel Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;hexg8236&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.3494253&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "HTTP Request.All in generated-requests.executor": "Run",
+    "JUnit.TestEasyExcel.test02.executor": "Run",
+    "JUnit.TestPasswordEncoder.testDecode.executor": "Run",
+    "JUnit.TestPasswordEncoder.testPasswordEncoder.executor": "Run",
+    "JUnit.TestRedis.testRedis.executor": "Run",
+    "JUnit.TestRegular.testRep2.executor": "Run",
+    "JUnit.TestRestTemplate.executor": "Run",
+    "JUnit.TestRestTemplate.test02.executor": "Run",
+    "JUnit.TestRestTemplate.testRequest.executor": "Run",
+    "JUnit.TestRestTemplate.testRequestWithCookie.executor": "Run",
+    "JUnit.TestRestTemplate.testRequestWithForm.executor": "Run",
+    "JUnit.TestRestTemplate.testRequestWithJson.executor": "Run",
+    "JUnit.TestRestTemplate.testRequestWithParam.executor": "Run",
+    "JUnit.TestStockTimerService.testGetInnerMarketInfo.executor": "Run",
+    "Maven.stock_common [install].executor": "Run",
+    "Maven.stock_common [package].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.Stock.executor": "JRebel Executor",
+    "Spring Boot.StockApp.executor": "JRebel Debug",
+    "git-widget-placeholder": "hexg8236",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/学习资料/项目1-今日指数/day05-股票数据采集功能/资料/http测试接口工程/test4http",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "E:/Project/GitHub Project/Stock_HeiMa/stock_job/src/main/java/top/newhand/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.3494253",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;,
-      &quot;redis&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql",
+      "redis"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
@@ -128,54 +153,86 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="top.newhand.stock.service" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="top.newhand.stock.pojo.domain" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Stock">
-    <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
-      <method v="2" />
-    </configuration>
-    <configuration name="TestPasswordEncoder.testDecode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestStockTimerService.testGetInnerMarketInfo">
+    <configuration name="TestRegular.testRep2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="stock_backend" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="top.newhand.stock.*" />
+          <option name="PATTERN" value="top.newhand.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="top.newhand" />
-      <option name="MAIN_CLASS_NAME" value="top.newhand.TestPasswordEncoder" />
-      <option name="METHOD_NAME" value="testDecode" />
+      <option name="MAIN_CLASS_NAME" value="top.newhand.TestRegular" />
+      <option name="METHOD_NAME" value="testRep2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPasswordEncoder.testPasswordEncoder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="stock_backend" />
+    <configuration name="TestRestTemplate.testRequestWithCookie" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="stock_job" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="top.newhand.stock.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="top.newhand" />
-      <option name="MAIN_CLASS_NAME" value="top.newhand.TestPasswordEncoder" />
-      <option name="METHOD_NAME" value="testPasswordEncoder" />
+      <option name="PACKAGE_NAME" value="top.newhand.stock" />
+      <option name="MAIN_CLASS_NAME" value="top.newhand.stock.TestRestTemplate" />
+      <option name="METHOD_NAME" value="testRequestWithCookie" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestRedis.testRedis" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="stock_backend" />
+    <configuration name="TestRestTemplate.testRequestWithForm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="stock_job" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="top.newhand.stock.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="top.newhand" />
-      <option name="MAIN_CLASS_NAME" value="top.newhand.TestRedis" />
-      <option name="METHOD_NAME" value="testRedis" />
+      <option name="PACKAGE_NAME" value="top.newhand.stock" />
+      <option name="MAIN_CLASS_NAME" value="top.newhand.stock.TestRestTemplate" />
+      <option name="METHOD_NAME" value="testRequestWithForm" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRestTemplate.testRequestWithJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="stock_job" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.newhand.stock.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.newhand.stock" />
+      <option name="MAIN_CLASS_NAME" value="top.newhand.stock.TestRestTemplate" />
+      <option name="METHOD_NAME" value="testRequestWithJson" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestStockTimerService.testGetInnerMarketInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="stock_job" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.newhand.stock.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.newhand.stock" />
+      <option name="MAIN_CLASS_NAME" value="top.newhand.stock.TestStockTimerService" />
+      <option name="METHOD_NAME" value="testGetInnerMarketInfo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -192,11 +249,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestRedis.testRedis" />
-        <item itemvalue="JUnit.TestPasswordEncoder.testPasswordEncoder" />
-        <item itemvalue="JUnit.TestPasswordEncoder.testDecode" />
-        <item itemvalue="HTTP Request.All in generated-requests" />
-        <item itemvalue="JUnit.TestRedis.testRedis" />
+        <item itemvalue="JUnit.TestStockTimerService.testGetInnerMarketInfo" />
+        <item itemvalue="JUnit.TestRegular.testRep2" />
+        <item itemvalue="JUnit.TestRestTemplate.testRequestWithCookie" />
+        <item itemvalue="JUnit.TestRestTemplate.testRequestWithJson" />
+        <item itemvalue="JUnit.TestRestTemplate.testRequestWithForm" />
       </list>
     </recent_temporary>
   </component>
@@ -253,18 +310,8 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="9eee66e0-27ed-48ad-920c-163fc254fb7f" value="TOOL_WINDOW" />
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
-        <entry key="9eee66e0-27ed-48ad-920c-163fc254fb7f">
-          <value>
-            <State />
-          </value>
-        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -302,11 +349,20 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserMapper.java</url>
           <line>25</line>
-          <properties class="top.newhand.stock.mapper.SysUserMapper" method="findByUserName">
+          <properties class="top.newhand.stock.mapper.SysUserMapper">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/stock_job/src/test/java/top/newhand/stock/TestRestTemplate.java</url>
+          <line>89</line>
+          <properties class="top.newhand.stock.TestRestTemplate" method="testRequestWithForm">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
