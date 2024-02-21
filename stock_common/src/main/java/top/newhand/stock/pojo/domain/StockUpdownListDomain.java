@@ -1,5 +1,6 @@
 package top.newhand.stock.pojo.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -82,5 +83,6 @@ public class StockUpdownListDomain {
      * @Param 
      * @Date 14:43 2024/2/18
      **/
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date curDate;
 }

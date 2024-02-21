@@ -102,6 +102,6 @@ public class StockUpdownDomain {
     @ExcelProperty(value = {"股票涨幅信息统计表","日期"},index = 9)
     //easyExcel的注解-》excel
     @DateTimeFormat("yyy-MM-dd HH:mm")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date curDate;
 }

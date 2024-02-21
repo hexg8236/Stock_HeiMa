@@ -42,6 +42,10 @@ public class TestStockTimerService {
     }
 
     @Test
+    public void testGetOuterMarketInfo() {
+        stockTimerTaskService.getOuterMarketInfo();
+    }
+    @Test
     public void testGetStockIds() {
         List<String> stockIds = stockTimerService.getStockIds();
         System.out.println(stockIds);
@@ -57,6 +61,16 @@ public class TestStockTimerService {
         Lists.partition(all,15).forEach(ids->{
             System.out.println(ids);
         });
+    }
+
+    @Test
+    public void testGetStockRtIndex() {
+        stockTimerTaskService.getStockRtIndex();
+    }
+
+    @Test
+    public void testGetStockBlockRtIndex() {
+        stockTimerTaskService.getStockBlockRtIndex();
     }
 
 

@@ -41,6 +41,7 @@ public class CommonConfig {
         return new IdWorker(1l, 2l);
     }
 
+    @Bean
     public Cache<String, Object> caffeineCache() {
         return Caffeine.newBuilder()
                 // 设置最大缓存数量上限

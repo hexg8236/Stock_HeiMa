@@ -19,15 +19,6 @@ public interface StockTimerService {
      **/
     List<String> getStockIds();
 
-    /**
-     * 定义获取分钟级股票数据
-     */
-    void getStockRtIndex();
-    
-    /**
-     * @Description 定义获取分钟级股票板块数据
-     * @Param []
-     * @Date 16:31 2024/2/19
-     **/
-    void getStockBlockRtIndex();
+
+
 }

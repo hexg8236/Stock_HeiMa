@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("top.newhand.mapper")
+@MapperScan("top.newhand.stock.mapper")
 public class JobApp {
     public static void main(String[] args) {
         SpringApplication.run(JobApp.class, args);

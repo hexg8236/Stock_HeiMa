@@ -3,7 +3,7 @@ server:
   port: 8082
 spring:
   profiles:
-    active: stock
+    active: stock, mq, xxl
   # 配置mysql数据源
   datasource:
     druid:

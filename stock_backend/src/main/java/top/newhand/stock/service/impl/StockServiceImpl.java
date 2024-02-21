@@ -2,11 +2,11 @@ package top.newhand.stock.service.impl;
 
 import com.alibaba.excel.EasyExcel;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.benmanes.caffeine.cache.Cache;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -45,22 +45,22 @@ public class StockServiceImpl implements StockService {
 
     /**
      * @Description 大盘数据配置类
-     * @Param 
+     * @Param
      * @Date 12:49 2024/2/18
      **/
     @Autowired
     private StockInfoConfig stockInfoConfig;
     /**
      * @Description 股票市场信息数据接口
-     * @Param 
+     * @Param
      * @Date 12:49 2024/2/18
-     **/    
+     **/
     @Autowired
     private StockMarketIndexInfoMapper stockMarketIndexInfoMapper;
 
     /**
      * @Description 股票涨跌信息数据接口
-     * @Param 
+     * @Param
      * @Date 14:25 2024/2/18
      **/
     @Autowired
@@ -74,6 +74,9 @@ public class StockServiceImpl implements StockService {
     @Autowired
     private StockBlockRtInfoMapper stockBlockRtInfoMapper;
 
+    @Autowired
+    private Cache<String, Object> caffeineCache;
+
     @Override
     public R<List<InnerMarketDomain>> innerIndexAll() {
         // 1、获取国内A股的大盘集合
@@ -81,7 +84,7 @@ public class StockServiceImpl implements StockService {
         // 2、获取最近股票交易日期
         Date lastDate = DateTimeUtil.getLastDate4Stock(DateTime.now()).toDate();
         //TODO mock测试数据，后期数据通过第三方接口动态获取实时数据 可删除
-        lastDate=DateTime.parse("2022-01-02 09:32:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+//        Date lastDate = DateTime.parse(lastDate1, DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
         // 3、将获取的Java Date传入接口
         List<InnerMarketDomain> marketInfo = stockMarketIndexInfoMapper.getMarketInfo(inners, lastDate);
         return R.ok(marketInfo);
@@ -97,7 +100,7 @@ public class StockServiceImpl implements StockService {
         //获取股票最新交易时间点
         Date lastDate = DateTimeUtil.getLastDate4Stock(DateTime.now()).toDate();
         //TODO mock数据,后续删除
-        lastDate=DateTime.parse("2021-12-21 14:30:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+//        lastDate = DateTime.parse("2021-12-21 14:30:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
         // 1、调用mapper接口获取数据
         List<StockBlockDomain> stockBlockDomains = stockBlockRtInfoMapper.sectorAll(lastDate);
         if (CollectionUtils.isEmpty(stockBlockDomains)) {
@@ -113,7 +116,7 @@ public class StockServiceImpl implements StockService {
         // 2、根据当前最新的股票交易时间地点
         Date curDate = DateTimeUtil.getLastDate4Stock(DateTime.now()).toDate();
         // TODO mock数据
-        curDate= DateTime.parse("2022-06-07 15:00:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+//        curDate = DateTime.parse("2022-06-07 15:00:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
         // 3、调用Mapper接口查询
         List<StockUpdownDomain> infos = stockRtInfoMapper.getNewestStockInfo(curDate);
         // 判断查询数据是否有响应值
@@ -137,7 +140,7 @@ public class StockServiceImpl implements StockService {
         //获取股票最新交易时间点
         Date lastDate = DateTimeUtil.getLastDate4Stock(DateTime.now()).toDate();
         //TODO mock数据,后续删除
-        lastDate=DateTime.parse("2021-12-30 10:30:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+//        lastDate = DateTime.parse("2021-12-30 10:30:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
         List<StockUpdownListDomain> infos = stockRtInfoMapper.getStockUpdownList(lastDate);
         if (CollectionUtils.isEmpty(infos)) {
             return R.error(ResponseCode.NO_RESPONSE_DATA.getMessage());
@@ -157,21 +160,21 @@ public class StockServiceImpl implements StockService {
         DateTime curDateTime = DateTimeUtil.getLastDate4Stock(DateTime.now());
         Date curTime = curDateTime.toDate();
         //TODO mock 数据
-        curTime= DateTime.parse("2022-01-06 14:25:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+//        curTime = DateTime.parse("2022-01-06 14:25:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
         //1.2 获取最新交易时间对应的开盘时间
         DateTime openDate = DateTimeUtil.getOpenDate(curDateTime);
         Date openTime = openDate.toDate();
         //TODO mock数据
-        openTime= DateTime.parse("2022-01-06 09:30:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+//        openTime = DateTime.parse("2022-01-06 09:30:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
         //2.查询涨停数据
         //约定mapper中flag入参： 1-》涨停数据 0：跌停
-        List<Map> upCounts=stockRtInfoMapper.getStockUpdownCount(openTime,curTime,1);
+        List<Map> upCounts = stockRtInfoMapper.getStockUpdownCount(openTime, curTime, 1);
         //3.查询跌停数据
-        List<Map> dwCounts=stockRtInfoMapper.getStockUpdownCount(openTime,curTime,0);
+        List<Map> dwCounts = stockRtInfoMapper.getStockUpdownCount(openTime, curTime, 0);
         //4.组装数据
         HashMap<String, List> mapInfo = new HashMap<>();
-        mapInfo.put("upList",upCounts);
-        mapInfo.put("downList",dwCounts);
+        mapInfo.put("upList", upCounts);
+        mapInfo.put("downList", dwCounts);
         //5.返回结果
         return R.ok(mapInfo);
     }
@@ -181,9 +184,9 @@ public class StockServiceImpl implements StockService {
         //1.获取分页数据
         Date lastDate = DateTimeUtil.getLastDate4Stock(DateTime.now()).toDate();
         //TODO 伪造数据，后续删除
-        lastDate=DateTime.parse("2022-07-07 14:43:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
-        PageHelper.startPage(page,pageSize);
-        List<StockUpdownDomain> infos=stockRtInfoMapper.getAllStockUpDownByTime(lastDate);
+//        lastDate = DateTime.parse("2022-07-07 14:43:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+        PageHelper.startPage(page, pageSize);
+        List<StockUpdownDomain> infos = stockRtInfoMapper.getAllStockUpDownByTime(lastDate);
         response.setCharacterEncoding("utf-8");
         try {
             //2.判断分页数据是否为空，为空则响应json格式的提示信息
@@ -209,7 +212,16 @@ public class StockServiceImpl implements StockService {
             response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
             EasyExcel.write(response.getOutputStream(), StockUpdownDomain.class).sheet("股票涨幅信息").doWrite(infos);
         } catch (Exception e) {
-            log.error("导出时间：{},当初页码：{}，导出数据量：{}，发生异常信息：{}",lastDate,page,pageSize,e.getMessage());
+            log.error("导出时间：{},当初页码：{}，导出数据量：{}，发生异常信息：{}", lastDate, page, pageSize, e.getMessage());
         }
     }
+
+    @Override
+    public R<List<InnerMarketDomain>> getNewestInnerMarketInfos() {
+        return null;
+    }
+
 }
+
+
+

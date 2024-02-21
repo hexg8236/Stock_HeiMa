@@ -61,4 +61,6 @@ public interface StockService {
      * @Date 16:54 2024/2/18
      **/
     void stockExport(HttpServletResponse response, Integer page, Integer pageSize) throws IOException;
+
+    R<List<InnerMarketDomain>> getNewestInnerMarketInfos();
 }

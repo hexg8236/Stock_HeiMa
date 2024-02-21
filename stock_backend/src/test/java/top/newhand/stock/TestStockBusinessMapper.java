@@ -1,5 +1,6 @@
-package top.newhand;
+package top.newhand.stock;
 
+import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,7 @@ public class TestStockBusinessMapper {
     @Autowired
     private StockBusinessMapper stockBusinessMapper;
 
+    @Test
     public void testGetStockIds() {
         List<String> stockIds = stockBusinessMapper.getStockIds();
         System.out.println(stockIds);

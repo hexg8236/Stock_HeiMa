@@ -1,4 +1,4 @@
-package top.newhand;
+package top.newhand.stock;
 
 import org.junit.jupiter.api.Test;
 
