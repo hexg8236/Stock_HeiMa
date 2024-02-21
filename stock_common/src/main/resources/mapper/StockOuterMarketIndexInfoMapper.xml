@@ -61,6 +61,14 @@
                 <if test="curTime != null">#{curTime,jdbcType=TIMESTAMP},</if>
         </trim>
     </insert>
+    <insert id="insertBatch">
+        INSERT INTO stock_outer_market_index_info (id, market_code, market_name, cur_point, updown, rose, cur_time)
+        VALUES
+            <foreach collection="list" item="somi" separator=",">
+                (#{somi.id,jdbcType=BIGINT},#{somi.marketCode,jdbcType=CHAR},#{somi.marketName,jdbcType=VARCHAR},#{somi.curPoint,jdbcType=DECIMAL}, #{somi.updown,jdbcType=DECIMAL},
+                 #{somi.rose,jdbcType=DECIMAL},#{somi.curTime,jdbcType=TIMESTAMP})
+            </foreach>
+    </insert>
     <update id="updateByPrimaryKeySelective" parameterType="top.newhand.stock.pojo.entity.StockOuterMarketIndexInfo">
         update stock_outer_market_index_info
         <set>

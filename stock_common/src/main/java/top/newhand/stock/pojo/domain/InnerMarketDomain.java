@@ -70,6 +70,6 @@ public class InnerMarketDomain {
     /**
      * 当前时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date curTime;
 }
