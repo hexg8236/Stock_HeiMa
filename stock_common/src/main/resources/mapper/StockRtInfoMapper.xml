@@ -125,6 +125,47 @@
                 as tmp2 group by tmp2.title
         ]]>
     </select>
+    <select id="getStockInfoByCodeAndDate" resultType="top.newhand.stock.pojo.domain.Stock4MinuteDomain">
+        SELECT
+            sri.cur_time AS date,
+            sri.trade_amount AS tradeAmt,
+            sri.stock_code AS CODE,
+            sri.min_price lowPrice,
+            sri.pre_close_price AS preClosePrice,
+            sri.stock_name AS NAME,
+            sri.max_price AS highPrice,
+            sri.open_price AS openPrice,
+            sri.trade_volume AS tradeVol,
+            sri.cur_price AS tradePrice
+        FROM
+            stock_rt_info AS sri
+        WHERE
+            sri.stock_code = #{stockCode}
+          AND sri.cur_time BETWEEN #{startTime}
+            AND #{endTime};
+    </select>
+    <select id="getStockInfo4EvrDay" resultType="java.util.Map">
+        select
+            date_format(sri2.cur_time,'%Y%m%d') as date,
+            sri2.trade_amount as tradeAmt,
+            sri2.stock_code as code,
+            sri2.min_price as lowPrice,
+            sri2.stock_name as name,
+            sri2.max_price as highPrice,
+            sri2.open_price as openPrice,
+            sri2.trade_volume as tradeVol,
+            sri2.cur_price as closePrice,
+            sri2.pre_close_price as preClosePrice
+        from stock_rt_info as sri2
+        where sri2.cur_time in (select
+                                    max(sri.cur_time) as max_time
+                                from stock_rt_info as sri
+                                where sri.stock_code=#{stockCode}
+                                  and sri.cur_time between  #{startTime}   and	#{endTime}
+                                group by date_format(sri.cur_time,'%Y%m%d'))
+          and sri2.stock_code=#{stockCode}
+        order by sri2.cur_time
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from stock_rt_info

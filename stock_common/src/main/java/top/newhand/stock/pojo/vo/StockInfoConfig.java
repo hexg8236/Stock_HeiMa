@@ -48,7 +48,7 @@ public class StockInfoConfig {
     /**
      * @Description 个股股票区间
      * @Param 
-     * @Date 20:59 2024/2/22
+     * @Date 21:14 2024/2/22
      **/
     private List<String> upDownRange;
 }

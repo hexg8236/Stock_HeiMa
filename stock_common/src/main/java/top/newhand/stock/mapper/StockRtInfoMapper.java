@@ -1,6 +1,8 @@
 package top.newhand.stock.mapper;
 
 import org.apache.ibatis.annotations.Param;
+import top.newhand.stock.pojo.domain.Stock4EvrDayDomain;
+import top.newhand.stock.pojo.domain.Stock4MinuteDomain;
 import top.newhand.stock.pojo.domain.StockUpdownDomain;
 import top.newhand.stock.pojo.domain.StockUpdownListDomain;
 import top.newhand.stock.pojo.entity.StockRtInfo;
@@ -70,4 +72,18 @@ public interface StockRtInfoMapper {
      * @Date 20:54 2024/2/22
      **/
     List<Map> getStockUpDownSectionByTime(@Param("avlDate") Date curDate);
+
+    /**
+     * @Description 根据股票代码和时区获取股票
+     * @Param [code, startTime, endTime]
+     * @Date 21:18 2024/2/22
+     **/
+    List<Stock4MinuteDomain> getStockInfoByCodeAndDate(@Param("stockCode") String code,@Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
+    /**
+     * @Description 查询日K数据接口
+     * @Param [stockCode, startTime, endTime]
+     * @Date 21:40 2024/2/22
+     **/
+    List<Stock4EvrDayDomain> getStockInfo4EvrDay(@Param("stockCode") String stockCode, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }

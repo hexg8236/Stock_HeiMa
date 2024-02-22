@@ -27,6 +27,24 @@
     <select id="getStockIds" resultType="java.lang.String">
         select stock_code from stock_business
     </select>
+    <select id="getStockInfoByBlur" resultType="java.util.Map">
+        SELECT
+            stock_code as code,
+            stock_name as name
+        FROM
+            stock_business
+        WHERE stock_code LIKE #{searchStr} '%';
+    </select>
+    <select id="getBusinessDesByCode" resultType="top.newhand.stock.pojo.domain.StockBusinessDesDomain">
+        SELECT
+            stock_code as code,
+            stock_name as name,
+            business as business,
+            block_name as trade
+        FROM
+            stock_business
+        WHERE stock_code = #{stockCode}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from stock_business

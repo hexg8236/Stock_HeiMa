@@ -26,6 +26,21 @@
         from stock_outer_market_index_info
         where  id = #{id,jdbcType=BIGINT} 
     </select>
+    <select id="getOuterMarketInfo" resultType="top.newhand.stock.pojo.domain.OuterMarketDomain">
+        select
+        somi.market_code as code,
+        somi.market_name as name,
+        somi.cur_point as curPoint,
+        somi.updown as upDown,
+        somi.rose as rose,
+        somi.cur_time as curTime
+        from stock_outer_market_index_info as somi
+        where somi.market_code in
+        <foreach collection="marketIds" index="marketId" open="(" separator="," close=")">
+            #{marketId}
+        </foreach>
+        and somi.cur_time=#{timePoint}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from stock_outer_market_index_info

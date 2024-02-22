@@ -1,8 +1,6 @@
 package top.newhand.stock.service;
 
-import top.newhand.stock.pojo.domain.InnerMarketDomain;
-import top.newhand.stock.pojo.domain.StockBlockDomain;
-import top.newhand.stock.pojo.domain.StockUpdownListDomain;
+import top.newhand.stock.pojo.domain.*;
 import top.newhand.stock.vo.R;
 import top.newhand.stock.vo.resp.PageResult;
 
@@ -77,5 +75,39 @@ public interface StockService {
      * @Date 20:54 2024/2/22
      **/
     R<Map> stockUpDownScopeCount();
-    
+
+    /**
+     * @Description 分时K线行情功能
+     * @Param [code]
+     * @Date 21:17 2024/2/22
+     **/
+    R<List<Stock4MinuteDomain>> stockScreenTimeSharing(String code);
+
+    /**
+     * @Description 获取个股日K线功能
+     * @Param [stockCode]
+     * @Date 21:33 2024/2/22
+     **/
+    R<List<Stock4EvrDayDomain>> sotckCreenDkLine(String stockCode);
+
+    /**
+     * @Description 获取国外大盘点
+     * @Param []
+     * @Date 22:02 2024/2/22
+     **/
+    R<List<OuterMarketDomain>> outerIndexAll();
+
+    /**
+     * @Description 根据输入code进行模糊查询
+     * @Param [searchCode]
+     * @Date 22:06 2024/2/22
+     **/
+    R<List<Map<String, String>>> searchCode(String searchStr);
+
+    /**
+     * @Description 获取个股主营业务 功能
+     * @Param [stockCode]
+     * @Date 22:24 2024/2/22
+     **/
+    R<StockBusinessDesDomain> getStockBusinessDes(String stockCode);
 }

@@ -69,8 +69,6 @@
         ORDER BY
             time ASC;
     </select>
-
-
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from stock_market_index_info
         where  id = #{id,jdbcType=BIGINT} 

@@ -4,23 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8035e72c-3d9d-4a7c-8479-8a5a25923e8f" name="Changes" comment="今日指数 Job数据采集模块开发&#10;以及Bug修改">
-      <change afterPath="$PROJECT_DIR$/stock_common/src/main/resources/application-xxl.yml" afterDir="false" />
+    <list default="true" id="8035e72c-3d9d-4a7c-8479-8a5a25923e8f" name="Changes" comment="今日指数开发">
+      <change afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/domain/OuterMarketDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/domain/Stock4EvrDayDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/domain/Stock4MinuteDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/domain/StockBusinessDesDomain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/job/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/job/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/controller/StockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/controller/StockController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/StockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/StockService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/StockServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/StockServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_backend/src/main/resources/application-stock.yml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/resources/application-stock.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/config/TaskExecutePoolConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/config/TaskExecutePoolConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockBusinessMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockBusinessMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockMarketIndexInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockMarketIndexInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockOuterMarketIndexInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockOuterMarketIndexInfoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockRtInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockRtInfoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/vo/StockInfoConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/vo/StockInfoConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/utils/ParserStockInfoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/utils/ParserStockInfoUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockBusinessMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockBusinessMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockMarketIndexInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockMarketIndexInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockOuterMarketIndexInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockOuterMarketIndexInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockRtInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/StockRtInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/impl/StockTimerTaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_job/src/main/java/top/newhand/stock/service/impl/StockTimerTaskServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +36,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Dockerfile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -172,6 +173,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="top.newhand.stock.pojo.domain" />
       <recent name="top.newhand.stock.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -333,7 +335,7 @@
       <workItem from="1707950778369" duration="16289000" />
       <workItem from="1708178141447" duration="456000" />
       <workItem from="1708225764514" duration="6057000" />
-      <workItem from="1708502922967" duration="17777000" />
+      <workItem from="1708502922967" duration="22503000" />
     </task>
     <task id="LOCAL-00001" summary="初始化仓库，创建相应表，提交相应代码">
       <option name="closed" value="true" />
@@ -391,7 +393,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708503089045</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="今日指数开发">
+      <option name="closed" value="true" />
+      <created>1708607667187</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708607667187</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +438,8 @@
     <MESSAGE value="数据采集-个股数据收集功能开发" />
     <MESSAGE value="RabiitMq配置" />
     <MESSAGE value="今日指数 Job数据采集模块开发&#10;以及Bug修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="今日指数 Job数据采集模块开发&#10;以及Bug修改" />
+    <MESSAGE value="今日指数开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="今日指数开发" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -440,13 +451,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/StockServiceImpl.java</url>
-          <line>172</line>
+          <line>185</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/StockServiceImpl.java</url>
-          <line>174</line>
+          <line>187</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/StockServiceImpl.java</url>
+          <line>382</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserMapper.java</url>
@@ -474,6 +490,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/StockBusinessMapper.java</url>
+          <line>41</line>
+          <properties class="top.newhand.stock.mapper.StockBusinessMapper" method="getStockInfoByBlur">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

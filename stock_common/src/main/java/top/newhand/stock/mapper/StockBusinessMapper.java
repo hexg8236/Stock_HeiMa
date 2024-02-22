@@ -1,8 +1,11 @@
 package top.newhand.stock.mapper;
 
+import org.apache.ibatis.annotations.Param;
+import top.newhand.stock.pojo.domain.StockBusinessDesDomain;
 import top.newhand.stock.pojo.entity.StockBusiness;
 
 import java.util.List;
+import java.util.Map;
 
 /**
 * @author hexg8
@@ -31,4 +34,17 @@ public interface StockBusinessMapper {
      **/
     List<String> getStockIds();
 
+    /**
+     * @Description 根据信息进行模糊查询
+     * @Param [searchStr]
+     * @Date 22:10 2024/2/22
+     **/
+    List<Map<String, String>> getStockInfoByBlur(@Param("searchStr") String searchStr);
+
+    /**
+     * @Description 获取A股主营业务查询
+     * @Param [stockCode]
+     * @Date 22:26 2024/2/22
+     **/
+    StockBusinessDesDomain getBusinessDesByCode(@Param("stockCode") String stockCode);
 }

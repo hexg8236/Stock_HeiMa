@@ -30,7 +30,7 @@ public interface StockMarketIndexInfoMapper {
     int updateByPrimaryKey(StockMarketIndexInfo record);
 
     /**
-     * @Description 获取板块信息数据接口
+     * @Description 获取国内股票信息数据接口
      * @Param [marketIds, timePoint]
      * @Date 14:32 2024/2/18
      **/
