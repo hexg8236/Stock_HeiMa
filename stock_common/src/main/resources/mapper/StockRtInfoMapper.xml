@@ -72,7 +72,7 @@
         (sri.cur_price-sri.pre_close_price)/sri.pre_close_price as ud,
         sri.cur_time as time
         from stock_rt_info sri
-        where sri.cur_time BETWEEN #{openTime} and #{curTime}
+        where sri.cur_time BETWEEN date_format(#{openTime,jdbcType=TIMESTAMP} , '%Y-%m-%d %H:%i:%s') and #{curTime,jdbcType=TIMESTAMP}
         having ud
         <if test="flag==1">
             >=0.1
@@ -98,6 +98,73 @@
             (sri.cur_price-sri.pre_close_price) /pre_close_price as upDown,
             sri.cur_price as tradePrice        from stock_rt_info as sri
         where sri.cur_time = #{timePoint}
+    </select>
+    <select id="getStockUpDownSectionByTime" resultType="java.util.Map">
+            <![CDATA[
+        select
+            tmp2.title,
+            count(*) as count
+        from
+            (select
+                 CASE
+                     WHEN tmp.rate > 0.07 THEN  '>7%'
+                     WHEN tmp.rate > 0.05 AND tmp.rate <= 0.07 THEN '5~7%'
+                     WHEN tmp.rate > 0.03 AND tmp.rate <= 0.05 THEN '3~5%'
+                     WHEN tmp.rate > 0 AND tmp.rate <= 0.03 THEN '0~3%'
+                     WHEN tmp.rate > -0.03 AND tmp.rate <= 0 THEN '-3~0%'
+                     WHEN tmp.rate > -0.05 AND tmp.rate <= -0.03 THEN '-5~-3%'
+                     WHEN tmp.rate > -0.07 AND tmp.rate <= -0.05 THEN '-7~-5%'
+                     ELSE '<-7%'
+                     END 'title'
+             from
+                 (select
+                      (sri.cur_price-sri.pre_close_price)/sri.pre_close_price as rate
+                  from stock_rt_info as sri
+                  where sri.cur_time=#{avlDate})
+                     as tmp)
+                as tmp2 group by tmp2.title
+        ]]>
+    </select>
+    <select id="getStockInfoByCodeAndDate" resultType="top.newhand.stock.pojo.domain.Stock4MinuteDomain">
+        SELECT
+            sri.cur_time AS date,
+            sri.trade_amount AS tradeAmt,
+            sri.stock_code AS CODE,
+            sri.min_price lowPrice,
+            sri.pre_close_price AS preClosePrice,
+            sri.stock_name AS NAME,
+            sri.max_price AS highPrice,
+            sri.open_price AS openPrice,
+            sri.trade_volume AS tradeVol,
+            sri.cur_price AS tradePrice
+        FROM
+            stock_rt_info AS sri
+        WHERE
+            sri.stock_code = #{stockCode}
+          AND sri.cur_time BETWEEN #{startTime}
+            AND #{endTime};
+    </select>
+    <select id="getStockInfo4EvrDay" resultType="java.util.Map">
+        select
+            date_format(sri2.cur_time,'%Y%m%d') as date,
+            sri2.trade_amount as tradeAmt,
+            sri2.stock_code as code,
+            sri2.min_price as lowPrice,
+            sri2.stock_name as name,
+            sri2.max_price as highPrice,
+            sri2.open_price as openPrice,
+            sri2.trade_volume as tradeVol,
+            sri2.cur_price as closePrice,
+            sri2.pre_close_price as preClosePrice
+        from stock_rt_info as sri2
+        where sri2.cur_time in (select
+                                    max(sri.cur_time) as max_time
+                                from stock_rt_info as sri
+                                where sri.stock_code=#{stockCode}
+                                  and sri.cur_time between  #{startTime}   and	#{endTime}
+                                group by date_format(sri.cur_time,'%Y%m%d'))
+          and sri2.stock_code=#{stockCode}
+        order by sri2.cur_time
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

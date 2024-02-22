@@ -7,16 +7,12 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import top.newhand.stock.mapper.StockBlockRtInfoMapper;
-import top.newhand.stock.mapper.StockMarketIndexInfoMapper;
-import top.newhand.stock.mapper.StockRtInfoMapper;
-import top.newhand.stock.pojo.domain.InnerMarketDomain;
-import top.newhand.stock.pojo.domain.StockBlockDomain;
-import top.newhand.stock.pojo.domain.StockUpdownDomain;
-import top.newhand.stock.pojo.domain.StockUpdownListDomain;
+import top.newhand.stock.mapper.*;
+import top.newhand.stock.pojo.domain.*;
 import top.newhand.stock.pojo.vo.StockInfoConfig;
 import top.newhand.stock.service.StockService;
 import top.newhand.stock.utils.DateTimeUtil;
@@ -27,10 +23,9 @@ import top.newhand.stock.vo.resp.PageResult;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName StockServiceImpl
@@ -59,6 +54,15 @@ public class StockServiceImpl implements StockService {
     private StockMarketIndexInfoMapper stockMarketIndexInfoMapper;
 
     /**
+     * @Description 股票市场信息数据接口
+     * @Param
+     * @Date 12:49 2024/2/18
+     **/
+    @Autowired
+    private StockOuterMarketIndexInfoMapper stockOuterMarketIndexInfoMapper;
+
+
+    /**
      * @Description 股票涨跌信息数据接口
      * @Param
      * @Date 14:25 2024/2/18
@@ -74,6 +78,15 @@ public class StockServiceImpl implements StockService {
     @Autowired
     private StockBlockRtInfoMapper stockBlockRtInfoMapper;
 
+    
+    /**
+     * @Description 股票新街口
+     * @Param 
+     * @Date 22:08 2024/2/22
+     **/
+    @Autowired
+    private StockBusinessMapper stockBusinessMapper;
+    
     @Autowired
     private Cache<String, Object> caffeineCache;
 
@@ -156,7 +169,7 @@ public class StockServiceImpl implements StockService {
     @Override
     public R<Map> getStockUpdownCount() {
         //1.获取最新的交易时间范围 openTime  curTime
-        //1.1 获取最新股票交易时间点
+        //1.1 获取最新股票交易时间点、
         DateTime curDateTime = DateTimeUtil.getLastDate4Stock(DateTime.now());
         Date curTime = curDateTime.toDate();
         //TODO mock 数据
@@ -164,6 +177,8 @@ public class StockServiceImpl implements StockService {
         //1.2 获取最新交易时间对应的开盘时间
         DateTime openDate = DateTimeUtil.getOpenDate(curDateTime);
         Date openTime = openDate.toDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         //TODO mock数据
 //        openTime = DateTime.parse("2022-01-06 09:30:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
         //2.查询涨停数据
@@ -221,6 +236,196 @@ public class StockServiceImpl implements StockService {
         return null;
     }
 
+    /**
+     * @Description 成交量对比
+     * @Param []
+     * @Date 20:51 2024/2/22
+     **/
+    @Override
+    public R<Map> stockTradeVol4InnerMarket() {
+        //1.获取T日和T-1日的开始时间和结束时间
+        //1.1 获取最近股票有效交易时间点--T日时间范围
+        DateTime lastDateTime = DateTimeUtil.getLastDate4Stock(DateTime.now());
+        DateTime openDateTime = DateTimeUtil.getOpenDate(lastDateTime);
+        //转化成java中Date,这样jdbc默认识别
+        Date startTime4T = openDateTime.toDate();
+        Date endTime4T=lastDateTime.toDate();
+        //TODO  mock数据
+        //startTime4T=DateTime.parse("2022-01-03 09:30:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+        //endTime4T=DateTime.parse("2022-01-03 14:40:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+        //1.2 获取T-1日的区间范围
+        //获取lastDateTime的上一个股票有效交易日
+        DateTime preLastDateTime = DateTimeUtil.getPreviousTradingDay(lastDateTime);
+        DateTime preOpenDateTime = DateTimeUtil.getOpenDate(preLastDateTime);
+        //转化成java中Date,这样jdbc默认识别
+        Date startTime4PreT = preOpenDateTime.toDate();
+        Date endTime4PreT=preLastDateTime.toDate();
+        //TODO  mock数据
+//        startTime4PreT=DateTime.parse("2022-01-02 09:30:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+//        endTime4PreT=DateTime.parse("2022-01-02 14:40:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+
+        //2.获取上证和深证的配置的大盘id
+        //2.1 获取大盘的id集合
+        List<String> markedIds = stockInfoConfig.getInner();
+        //3.分别查询T日和T-1日的交易量数据，得到两个集合
+        //3.1 查询T日大盘交易统计数据
+        List<Map> data4T=stockMarketIndexInfoMapper.getStockTradeVol(markedIds,startTime4T,endTime4T);
+        if (CollectionUtils.isEmpty(data4T)) {
+            data4T=new ArrayList<>();
+        }
+        //3.2 查询T-1日大盘交易统计数据
+        List<Map> data4PreT=stockMarketIndexInfoMapper.getStockTradeVol(markedIds,startTime4PreT,endTime4PreT);
+        if (CollectionUtils.isEmpty(data4PreT)) {
+            data4PreT=new ArrayList<>();
+        }
+        //4.组装响应数据
+        HashMap<String, List> info = new HashMap<>();
+        info.put("amtList",data4T);
+        info.put("yesAmtList",data4PreT);
+        //5.返回数据
+        return R.ok(info);
+    }
+
+    @Override
+    public R<Map> stockUpDownScopeCount() {
+        //1.获取股票最新一次交易的时间点
+        Date curDate = DateTimeUtil.getLastDate4Stock(DateTime.now()).toDate();
+        //mock data
+        // curDate=DateTime.parse("2022-01-06 09:55:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+        //2.查询股票信息
+        List<Map> maps=stockRtInfoMapper.getStockUpDownSectionByTime(curDate);
+        //2.1 获取有序的标题集合
+        List<String> orderSections = stockInfoConfig.getUpDownRange();
+        //思路：利用List集合的属性，然后顺序编译，找出每个标题对应的map，然后维护到一个新的List集合下即可
+
+//        List<Map> orderMaps =new ArrayList<>();
+//        for (String title : orderSections) {
+//            Map map=null;
+//            for (Map m : maps) {
+//                if (m.containsValue(title)) {
+//                    map=m;
+//                    break;
+//                }
+//            }
+//            if (map==null) {
+//                map=new HashMap();
+//                map.put("count",0);
+//                map.put("title",title);
+//            }
+//            orderMaps.add(map);
+//        }
+        //方式2：使用lambda表达式指定
+        List<Map> orderMaps  =  orderSections.stream().map(title->{
+            Map mp=null;
+            Optional<Map> op = maps.stream().filter(m -> m.containsValue(title)).findFirst();
+            //判断是否存在符合过滤条件的元素
+            if (op.isPresent()) {
+                mp=op.get();
+            }else{
+                mp=new HashMap();
+                mp.put("count",0);
+                mp.put("title",title);
+            }
+            return mp;
+        }).collect(Collectors.toList());
+        //3.组装数据
+        HashMap<String, Object> mapInfo = new HashMap<>();
+        //获取指定日期格式的字符串
+        String curDateStr = new DateTime(curDate).toString(DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss"));
+        mapInfo.put("time",curDateStr);
+        mapInfo.put("infos",orderMaps);
+        //4.返回数据
+        return R.ok(mapInfo);
+    }
+
+    /**
+     * 功能描述：查询单个个股的分时行情数据，也就是统计指定股票T日每分钟的交易数据；
+     *         如果当前日期不在有效时间内，则以最近的一个股票交易时间作为查询时间点
+     * @param code 股票编码
+     * @return
+     */
+    @Override
+    public R<List<Stock4MinuteDomain>> stockScreenTimeSharing(String code) {
+        //1.获取最近最新的交易时间点和对应的开盘日期
+        //1.1 获取最近有效时间点
+        DateTime lastDate4Stock = DateTimeUtil.getLastDate4Stock(DateTime.now());
+        Date endTime = lastDate4Stock.toDate();
+        //TODO mockdata
+//        endTime=DateTime.parse("2021-12-30 14:47:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+
+        //1.2 获取最近有效时间点对应的开盘日期
+        DateTime openDateTime = DateTimeUtil.getOpenDate(lastDate4Stock);
+        Date startTime = openDateTime.toDate();
+        //TODO MOCK DATA
+//        startTime=DateTime.parse("2021-12-30 09:30:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+        //2.根据股票code和日期范围查询
+        List<Stock4MinuteDomain> list=stockRtInfoMapper.getStockInfoByCodeAndDate(code,startTime,endTime);
+        //判断非空处理
+        if (CollectionUtils.isEmpty(list)) {
+            list=new ArrayList<>();
+        }
+        //3.返回响应数据
+        return R.ok(list);
+    }
+
+    
+    /**
+     * @Description 功能描述： 单个个股日K数据查询
+     * @Param 默认查询历史20天的数据
+     * @Date 21:39 2024/2/22
+     **/
+    @Override
+    public R<List<Stock4EvrDayDomain>> sotckCreenDkLine(String stockCode) {
+        //1、获取查询的日期范围
+        // 1.1 获取截止时间
+        DateTime endDateTime = DateTimeUtil.getLastDate4Stock(DateTime.now());
+        Date endTime  = endDateTime.toDate();
+        DateTime startDateTime = endDateTime.minusDays(10);
+        Date startTime = startDateTime.toDate();
+        List<Stock4EvrDayDomain> infos = stockRtInfoMapper.getStockInfo4EvrDay(stockCode, startTime, endTime);
+        return R.ok(infos);
+    }
+
+    /**
+     * @Description 获取外盘数据接口
+     * @Param []
+     * @Date 22:02 2024/2/22
+     **/
+    @Override
+    public R<List<OuterMarketDomain>> outerIndexAll() {
+        // 1、获取国内A股的大盘集合
+        List<String> outers = stockInfoConfig.getOuter();
+        // 2、获取最近股票交易日期
+        Date lastDate = DateTimeUtil.getLastDate4Stock(DateTime.now()).toDate();
+        //TODO mock测试数据，后期数据通过第三方接口动态获取实时数据 可删除
+//        Date lastDate = DateTime.parse(lastDate1, DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+        // 3、将获取的Java Date传入接口
+        List<OuterMarketDomain> marketInfo = stockOuterMarketIndexInfoMapper.getOuterMarketInfo(outers, lastDate);
+        return R.ok(marketInfo);
+    }
+
+
+    /**
+     * @Description 根据前台输入code进行模糊查询返回完整code
+     * @Param [searchCode]
+     * @Date 22:06 2024/2/22
+     **/
+    @Override
+    public R<List<Map<String, String>>> searchCode(String searchStr) {
+        List<Map<String, String>> result = stockBusinessMapper.getStockInfoByBlur(searchStr);
+        return R.ok(result);
+    }
+
+    /**
+     * @Description 获取个股主营业查询
+     * @Param [stockCode]
+     * @Date 22:25 2024/2/22
+     **/
+    @Override
+    public R<StockBusinessDesDomain> getStockBusinessDes(String stockCode) {
+        StockBusinessDesDomain desDomain = stockBusinessMapper.getBusinessDesByCode(stockCode);
+        return R.ok(desDomain);
+    }
 }
 
 

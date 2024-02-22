@@ -181,8 +181,8 @@ public class StockTimerTaskServiceImpl implements StockTimerTaskService {
             //获取成交金额
             BigDecimal tradeVol=new BigDecimal(splitArr[9]);
             //时间
-            Date curTime = DateTimeUtil.getDateTimeWithoutSecond(DateTime.now()).toDate();
-            //Date curTime = DateTimeUtil.getDateTimeWithoutSecond(splitArr[30] + " " + splitArr[31]).toDate();
+//            Date curTime = DateTimeUtil.getDateTimeWithoutSecond(DateTime.now()).toDate();
+            Date curTime = DateTimeUtil.getDateTimeWithoutSecond(splitArr[30] + " " + splitArr[31]).toDate();
             //组装entity对象
             StockMarketIndexInfo info = StockMarketIndexInfo.builder()
                     .id(idWorker.nextId())

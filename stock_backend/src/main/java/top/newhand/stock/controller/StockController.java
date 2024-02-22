@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import top.newhand.stock.pojo.domain.InnerMarketDomain;
-import top.newhand.stock.pojo.domain.StockBlockDomain;
-import top.newhand.stock.pojo.domain.StockUpdownListDomain;
+import top.newhand.stock.pojo.domain.*;
 import top.newhand.stock.service.StockService;
 import top.newhand.stock.vo.R;
 import top.newhand.stock.vo.resp.PageResult;
@@ -97,4 +95,74 @@ public class StockController {
         stockService.stockExport(response,page,pageSize);
     }
 
+    /**
+     * @Description 成交量对比功能
+     * @Param []
+     * @Date 20:32 2024/2/22
+     **/
+    @GetMapping("/stock/tradeAmt")
+    public R<Map> stockTradeVol4InnerMarket(){
+        return stockService.stockTradeVol4InnerMarket();
+    }
+
+    /**
+     * 查询当前时间下股票的涨跌幅度区间统计功能
+     * 如果当前日期不在有效时间内，则以最近的一个股票交易时间作为查询点
+     * @return
+     */
+    @GetMapping("/stock/updown")
+    public R<Map> getStockUpDown() {
+        return stockService.stockUpDownScopeCount();
+    }
+
+    /**
+     * 功能描述：查询单个个股的分时行情数据，也就是统计指定股票T日每分钟的交易数据；
+     *         如果当前日期不在有效时间内，则以最近的一个股票交易时间作为查询时间点
+     * @param code 股票编码
+     * @return
+     */
+    @GetMapping("/stock/screen/time-sharing")
+    public R<List<Stock4MinuteDomain>> stockScreenTimeSharing(String code){
+        return stockService.stockScreenTimeSharing(code);
+    }
+    
+    /**
+     * @Description 单个个股K， 数据查询， 可以根据时间时区查询数日的K线数据
+     * @Param [stockCode]
+     * @Date 21:32 2024/2/22
+     **/
+    @GetMapping("/stock/screen/dkline")
+    public R<List<Stock4EvrDayDomain>> getDayKLinData(@RequestParam("code") String stockCode) {
+        return stockService.sotckCreenDkLine(stockCode);
+    }
+
+    /**
+     * @Description 获取外盘指数行情查询
+     * @Param []
+     * @Date 21:51 2024/2/22
+     **/
+    @GetMapping("/external/index")
+    public R<List<OuterMarketDomain>> getExternalIndex() {
+        return stockService.outerIndexAll();
+    }
+
+    /**
+     * @Description 股票模糊查询
+     * @Param [searchStr]
+     * @Date 22:14 2024/2/22
+     **/
+    @GetMapping("/stock/search")
+    public R<List<Map<String, String>>> stockCodeSearch(@RequestParam("searchStr") String searchStr){
+        return stockService.searchCode(searchStr);
+    }
+
+    /**
+     * @Description 获取个股主营业查询
+     * @Param [stockCode]
+     * @Date 22:31 2024/2/22
+     **/
+    @GetMapping("/stock/describe")
+    public R<StockBusinessDesDomain> getStockBusinessDes(@RequestParam("code") String stockCode) {
+        return stockService.getStockBusinessDes(stockCode);
+    }
 }

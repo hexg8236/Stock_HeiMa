@@ -1,8 +1,12 @@
 package top.newhand.stock.mapper;
 
+import org.apache.ibatis.annotations.Param;
+import top.newhand.stock.pojo.domain.OuterMarketDomain;
 import top.newhand.stock.pojo.entity.StockOuterMarketIndexInfo;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
 * @author hexg8
@@ -30,4 +34,12 @@ public interface StockOuterMarketIndexInfoMapper {
      * @Date 21:01 2024/2/20
      **/
     int insertBatch(ArrayList<StockOuterMarketIndexInfo> list);
+
+    /**
+     * @Description 获取国外股票信息数据接口
+     * @Param [marketIds, timePoint]
+     * @Date 14:32 2024/2/18
+     **/
+    List<OuterMarketDomain> getOuterMarketInfo(@Param("marketIds") List<String> marketIds, @Param("timePoint") Date timePoint);
+
 }
