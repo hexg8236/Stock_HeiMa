@@ -38,7 +38,7 @@
         smi.market_name as name,
         smi.open_point as openPoint,
         smi.cur_point as curPoint,
-        smi.pre_close_point as preClosePrice,
+        smi.pre_close_point as preClosePoint,
         smi.trade_amount as tradeAmt,
         smi.trade_volume as tradeVol,
         smi.cur_point-smi.pre_close_point as upDown,
@@ -51,6 +51,23 @@
             #{marketId}
         </foreach>
         and smi.cur_time=#{timePoint}
+    </select>
+    <select id="getStockTradeVol" resultType="java.util.Map">
+        SELECT
+            date_format(smi.cur_time, '%Y%m%d%H%i') AS time,
+            sum(smi.trade_amount) as count
+        FROM
+            stock_market_index_info AS smi
+        WHERE
+            smi.cur_time BETWEEN #{startTime,jdbcType=TIMESTAMP} AND #{endTime,jdbcType=TIMESTAMP}
+          AND smi.market_code IN 
+            <foreach collection="markedIds" item="marketId" open="(" separator="," close=")">
+                #{marketId,jdbcType=VARCHAR}
+            </foreach>
+        GROUP BY
+            smi.cur_time
+        ORDER BY
+            time ASC;
     </select>
 
 

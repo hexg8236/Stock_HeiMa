@@ -3,6 +3,7 @@ package top.newhand.stock.utils;
 import com.google.common.base.Strings;
 import com.google.gson.Gson;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 import top.newhand.stock.pojo.entity.StockBlockRtInfo;
 import top.newhand.stock.pojo.entity.StockMarketIndexInfo;
 import top.newhand.stock.pojo.entity.StockOuterMarketIndexInfo;
@@ -93,8 +94,8 @@ public class ParserStockInfoUtil {
                 //成金额
                 BigDecimal tradeVol = new BigDecimal(others[9]);
                 //当前日期
-                Date curDateTime = DateTimeUtil.getDateTimeWithoutSecond(others[30] + " " + others[31]).toDate();
-                //Date currentTime = DateTime.parse(others[30] + " " + others[31], DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
+//                Date curDateTime = DateTimeUtil.getDateTimeWithoutSecond(others[30] + " " + others[31]).toDate();
+                Date currentTime = DateTime.parse(others[30] + " " + others[31], DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")).toDate();
                 StockRtInfo stockRtInfo =StockRtInfo.builder()
                         .id(idWorker.nextId())
                         .stockCode(stockCode)
@@ -106,7 +107,7 @@ public class ParserStockInfoUtil {
                         .minPrice(minPrice)
                         .tradeAmount(tradeAmount)
                         .tradeVolume(tradeVol)
-                        .curTime(curDateTime)
+                        .curTime(currentTime)
                         .build();
                 return stockRtInfo;
     }

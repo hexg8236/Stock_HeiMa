@@ -44,4 +44,11 @@ public class StockInfoConfig {
      * @Date 21:04 2024/2/18
      **/
     private String blockUrl;
+    
+    /**
+     * @Description 个股股票区间
+     * @Param 
+     * @Date 20:59 2024/2/22
+     **/
+    private List<String> upDownRange;
 }

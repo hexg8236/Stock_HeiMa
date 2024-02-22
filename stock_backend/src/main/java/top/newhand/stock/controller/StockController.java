@@ -97,4 +97,23 @@ public class StockController {
         stockService.stockExport(response,page,pageSize);
     }
 
+    /**
+     * @Description 成交量对比功能
+     * @Param []
+     * @Date 20:32 2024/2/22
+     **/
+    @GetMapping("/stock/tradeAmt")
+    public R<Map> stockTradeVol4InnerMarket(){
+        return stockService.stockTradeVol4InnerMarket();
+    }
+
+    /**
+     * 查询当前时间下股票的涨跌幅度区间统计功能
+     * 如果当前日期不在有效时间内，则以最近的一个股票交易时间作为查询点
+     * @return
+     */
+    @GetMapping("/stock/updown")
+    public R<Map> getStockUpDown() {
+        return stockService.stockUpDownScopeCount();
+    }
 }

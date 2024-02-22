@@ -63,4 +63,19 @@ public interface StockService {
     void stockExport(HttpServletResponse response, Integer page, Integer pageSize) throws IOException;
 
     R<List<InnerMarketDomain>> getNewestInnerMarketInfos();
+
+    /**
+     * @Description 成交量对比服务接口
+     * @Param []
+     * @Date 20:33 2024/2/22
+     **/
+    R<Map> stockTradeVol4InnerMarket();
+
+    /**
+     * @Description 个股涨跌幅度
+     * @Param []
+     * @Date 20:54 2024/2/22
+     **/
+    R<Map> stockUpDownScopeCount();
+    
 }

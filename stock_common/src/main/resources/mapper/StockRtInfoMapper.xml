@@ -72,7 +72,7 @@
         (sri.cur_price-sri.pre_close_price)/sri.pre_close_price as ud,
         sri.cur_time as time
         from stock_rt_info sri
-        where sri.cur_time BETWEEN #{openTime} and #{curTime}
+        where sri.cur_time BETWEEN date_format(#{openTime,jdbcType=TIMESTAMP} , '%Y-%m-%d %H:%i:%s') and #{curTime,jdbcType=TIMESTAMP}
         having ud
         <if test="flag==1">
             >=0.1
@@ -98,6 +98,32 @@
             (sri.cur_price-sri.pre_close_price) /pre_close_price as upDown,
             sri.cur_price as tradePrice        from stock_rt_info as sri
         where sri.cur_time = #{timePoint}
+    </select>
+    <select id="getStockUpDownSectionByTime" resultType="java.util.Map">
+            <![CDATA[
+        select
+            tmp2.title,
+            count(*) as count
+        from
+            (select
+                 CASE
+                     WHEN tmp.rate > 0.07 THEN  '>7%'
+                     WHEN tmp.rate > 0.05 AND tmp.rate <= 0.07 THEN '5~7%'
+                     WHEN tmp.rate > 0.03 AND tmp.rate <= 0.05 THEN '3~5%'
+                     WHEN tmp.rate > 0 AND tmp.rate <= 0.03 THEN '0~3%'
+                     WHEN tmp.rate > -0.03 AND tmp.rate <= 0 THEN '-3~0%'
+                     WHEN tmp.rate > -0.05 AND tmp.rate <= -0.03 THEN '-5~-3%'
+                     WHEN tmp.rate > -0.07 AND tmp.rate <= -0.05 THEN '-7~-5%'
+                     ELSE '<-7%'
+                     END 'title'
+             from
+                 (select
+                      (sri.cur_price-sri.pre_close_price)/sri.pre_close_price as rate
+                  from stock_rt_info as sri
+                  where sri.cur_time=#{avlDate})
+                     as tmp)
+                as tmp2 group by tmp2.title
+        ]]>
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

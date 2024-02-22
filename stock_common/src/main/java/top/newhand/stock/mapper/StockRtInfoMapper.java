@@ -63,4 +63,11 @@ public interface StockRtInfoMapper {
      * @Date 15:32 2024/2/19
      **/
     int insertBatch(List<StockRtInfo> stockRtInfoList);
+
+    /**
+     * @Description 获取个股涨幅根据时间
+     * @Param [curDate]
+     * @Date 20:54 2024/2/22
+     **/
+    List<Map> getStockUpDownSectionByTime(@Param("avlDate") Date curDate);
 }

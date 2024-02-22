@@ -1,0 +1,20 @@
+# XXJOB参数配置
+xxl:
+  job:
+    accessToken:
+    admin:
+      addresses: http://192.168.1.4:8090/
+    executor:
+      appname: stock-job-executor
+      address:
+      ip:
+      port: 6666
+      logpath: .\logs
+      logretentiondays: 30
+# 定时任务线程池基础参数 {#定时任务线程池基础参数  data-source-line="642"}
+task:
+  pool:
+    corePoolSize: 5 # 核心线程数
+    maxPoolSize: 20 # 设置最大线程数
+    keepAliveSeconds: 300 # 设置线程活跃时间，单位秒
+    queueCapacity: 100 # 设置队列容量
