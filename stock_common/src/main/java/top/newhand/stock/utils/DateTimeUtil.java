@@ -124,7 +124,7 @@ public class DateTimeUtil {
             //非工作日
             target=getCloseDate(getPreviousTradingDay(target));
         }
-        target = getDateTimeWithoutSecond(target);
+        target = getDateTimeWithoutSecond(target).minusMinutes(1);
         return target;
     }
 

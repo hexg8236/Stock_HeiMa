@@ -159,7 +159,7 @@ public class StockController {
     /**
      * @Description 获取个股主营业查询
      * @Param [stockCode]
-     * @Date 22:31 2024/2/22
+     * @Date 9:34 2024/2/23
      **/
     @GetMapping("/stock/describe")
     public R<StockBusinessDesDomain> getStockBusinessDes(@RequestParam("code") String stockCode) {
