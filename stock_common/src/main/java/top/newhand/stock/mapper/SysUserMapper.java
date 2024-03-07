@@ -1,7 +1,11 @@
 package top.newhand.stock.mapper;
 
 import org.apache.ibatis.annotations.Param;
+import top.newhand.stock.pojo.domain.SysUserDomain;
 import top.newhand.stock.pojo.entity.SysUser;
+
+import java.util.Date;
+import java.util.List;
 
 /**
 * @author hexg8
@@ -24,5 +28,12 @@ public interface SysUserMapper {
     int updateByPrimaryKey(SysUser record);
 
     SysUser findByUserName(@Param("name") String userName);
+    
+    /**
+     * @Description 获取用户信息根据条件
+     * @Param [page, pageSize, username, nickName, startTime, endTime]
+     * @Date 21:20 2024/3/2
+     **/
+    List<SysUserDomain> getUsers(@Param("page") Integer page, @Param("pageSize") Integer pageSize, @Param("username") String username, @Param("nickName") String nickName, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 
 }

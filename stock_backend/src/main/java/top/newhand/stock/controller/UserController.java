@@ -4,10 +4,13 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import top.newhand.stock.pojo.domain.SysUserDomain;
+import top.newhand.stock.pojo.domain.UserReqDomain;
 import top.newhand.stock.service.UserService;
 import top.newhand.stock.vo.R;
 import top.newhand.stock.vo.req.LoginReqVo;
 import top.newhand.stock.vo.resp.LoginRespVo;
+import top.newhand.stock.vo.resp.PageResult;
 
 import java.util.Map;
 
@@ -45,6 +48,12 @@ public class UserController {
     @ApiOperation(value = "获取验证码功能", notes = "登录界面获取验证码", response = R.class)
     public R<Map> getCaptchaCode() {
         return userService.getCaptchaCode();
+    }
+
+    @PostMapping("/users")
+    @ApiOperation(value = "获取验证码功能", notes = "登录界面获取验证码", response = R.class)
+    public R<PageResult<SysUserDomain>> getUsers( @RequestBody UserReqDomain userReqDomain){
+       return userService.getUsers(userReqDomain.getPageNum(), userReqDomain.getPageSize(), userReqDomain.getUsername(), userReqDomain.getNickName(), userReqDomain.getStartTime(), userReqDomain.getEndTime());
     }
     
 }

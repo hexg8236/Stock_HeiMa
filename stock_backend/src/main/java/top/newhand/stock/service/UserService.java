@@ -1,9 +1,11 @@
 package top.newhand.stock.service;
 
+import top.newhand.stock.pojo.domain.SysUserDomain;
 import top.newhand.stock.pojo.entity.SysUser;
 import top.newhand.stock.vo.R;
 import top.newhand.stock.vo.req.LoginReqVo;
 import top.newhand.stock.vo.resp.LoginRespVo;
+import top.newhand.stock.vo.resp.PageResult;
 
 import java.util.Map;
 
@@ -27,4 +29,6 @@ public interface UserService {
     R<LoginRespVo> login(LoginReqVo vo);
 
     R<Map> getCaptchaCode();
+
+    R<PageResult<SysUserDomain>> getUsers(Integer page, Integer pageSize, String username, String nickName, String startTime, String endTime);
 }

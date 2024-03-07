@@ -44,6 +44,28 @@
         where username = #{name}
     </select>
 
+    <select id="getUsers" resultType="top.newhand.stock.pojo.domain.SysUserDomain">
+        SELECT
+        id,username,password,phone,real_name,
+        nick_name,email,status,sex,deleted,
+        create_id,update_id,create_where,create_time,update_time
+        FROM
+        Sys_User
+<!--        <where>-->
+<!--            <if test="username != ''" >-->
+<!--                 username = #{username}-->
+<!--            </if>-->
+<!--            <if test="nickName != ''" >-->
+<!--                and nick_name = #{nickName}-->
+<!--            </if>-->
+<!--            <if test="startTime != ''" >-->
+<!--                and start_time &gt;= #{startTime}-->
+<!--            </if>-->
+<!--            <if test="endTime != ''" >-->
+<!--                and end_time &lt;= #{endTime}-->
+<!--            </if>-->
+<!--        </where>-->
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from sys_user
         where  id = #{id,jdbcType=BIGINT} 
