@@ -8,6 +8,7 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/*
 *.iws
 *.iml
 *.ipr
@@ -40,3 +41,9 @@ build/
 /.idea/httpRequests/http-client.cookies
 /.idea/httpRequests/2024-02-15T144848.400.json
 /.idea/httpRequests/http-requests-log.http
+/.idea/dataSources/1bbb5a9d-dd75-4bde-964d-8ef23253ee80/storage_v2/_src_/schema/performance_schema.kIw0nw.meta
+/.idea/dataSources/1bbb5a9d-dd75-4bde-964d-8ef23253ee80/storage_v2/_src_/schema/stock.FveKBg.meta
+/.idea/dataSources/1bbb5a9d-dd75-4bde-964d-8ef23253ee80/storage_v2/_src_/schema/information_schema.FNRwLQ.meta
+/.idea/dataSources/17e97395-a0e9-425c-9bbf-e4b68fd4c24d.xml
+/.idea/dataSources/1bbb5a9d-dd75-4bde-964d-8ef23253ee80.xml
+/.idea/dataSources/*
