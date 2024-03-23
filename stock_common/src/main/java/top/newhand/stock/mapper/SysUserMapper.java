@@ -34,6 +34,5 @@ public interface SysUserMapper {
      * @Param [page, pageSize, username, nickName, startTime, endTime]
      * @Date 21:20 2024/3/2
      **/
-    List<SysUserDomain> getUsers(@Param("page") Integer page, @Param("pageSize") Integer pageSize, @Param("username") String username, @Param("nickName") String nickName, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
-
+    List<SysUserDomain> selectUsers(@Param("page") Integer page, @Param("pageSize") Integer pageSize, @Param("username") String username, @Param("nickName") String nickName, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }

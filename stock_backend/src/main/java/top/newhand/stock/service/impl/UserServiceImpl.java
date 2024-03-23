@@ -14,9 +14,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import top.newhand.stock.constant.StockConstant;
+import top.newhand.stock.mapper.SysRoleMapper;
+import top.newhand.stock.mapper.SysRolePermissionMapper;
 import top.newhand.stock.mapper.SysUserMapper;
+import top.newhand.stock.mapper.SysUserRoleMapper;
 import top.newhand.stock.pojo.domain.SysUserDomain;
 import top.newhand.stock.pojo.entity.SysUser;
+import top.newhand.stock.pojo.entity.SysUserRole;
 import top.newhand.stock.service.UserService;
 import top.newhand.stock.utils.IdWorker;
 import top.newhand.stock.vo.R;
@@ -24,6 +28,7 @@ import top.newhand.stock.vo.ResponseCode;
 import top.newhand.stock.vo.req.LoginReqVo;
 import top.newhand.stock.vo.resp.LoginRespVo;
 import top.newhand.stock.vo.resp.PageResult;
+import top.newhand.stock.vo.resp.RolesRespVo;
 
 import java.awt.*;
 import java.util.Date;
@@ -45,6 +50,15 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private SysUserMapper sysUserMapper;
+
+    @Autowired
+    private SysRoleMapper sysRoleMapper;
+
+    @Autowired
+    private SysRolePermissionMapper sysRolePermissionMapper;
+
+    @Autowired
+    private SysUserRoleMapper sysUserRoleMapper;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -150,11 +164,27 @@ public class UserServiceImpl implements UserService {
 
         }
         PageHelper.startPage(page, pageSize);
-        List<SysUserDomain> users = sysUserMapper.getUsers(page, pageSize, username, nickName, start, end);
+        List<SysUserDomain> users = sysUserMapper.selectUsers(page, pageSize, username, nickName, start, end);
         if (CollectionUtils.isEmpty(users)) {
             return R.error(ResponseCode.NO_RESPONSE_DATA);
         }
         PageResult<SysUserDomain> pageResult = new PageResult<>(new PageInfo<>(users));
         return R.ok(pageResult);
+    }
+
+    @Override
+    public R addUser(SysUserDomain userReqDomain) {
+        SysUser user = new SysUser();
+        BeanUtils.copyProperties(userReqDomain, user);
+        int insert = sysUserMapper.insert(user);
+        return R.ok(insert);
+    }
+
+    @Override
+    public R<RolesRespVo> getRolesList(String userid) {
+        long longUserId = Long.parseLong(userid);
+        RolesRespVo respVo = new RolesRespVo();
+        SysUserRole sysUserRole = sysUserRoleMapper.selectByPrimaryKey(longUserId);
+        return null;
     }
 }

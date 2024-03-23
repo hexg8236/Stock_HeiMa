@@ -5,19 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8035e72c-3d9d-4a7c-8479-8a5a25923e8f" name="Changes" comment="今日指数其余功能开发">
-      <change afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/domain/SysUserDomain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/pojo/domain/UserReqDomain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9c2f14b9-caf0-479d-93c9-112e33cce5af.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9c2f14b9-caf0-479d-93c9-112e33cce5af.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/vo/resp/RolesRespVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_backend/src/main/resources/application-cache.yml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/resources/application-cache.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserRoleMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysUserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysUserRoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysUserRoleMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,80 +92,80 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.job/Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.All in generated-requests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestEasyExcel.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestEasyExcel.test02.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestPasswordEncoder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestPasswordEncoder.testDecode.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestPasswordEncoder.testPasswordEncoder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRedis.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRedis.testRedis.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRegular.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRegular.testRep2.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRestTemplate.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRestTemplate.test02.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRestTemplate.testRequest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRestTemplate.testRequestWithCookie.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRestTemplate.testRequestWithForm.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRestTemplate.testRequestWithJson.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestRestTemplate.testRequestWithParam.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestStockBusinessMapper.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestStockService.testGetStockBlockRtIndex.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestStockService.testGetStockRtIndex.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestStockTimerService.testGetInnerMarketInfo.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestStockTimerService.testGetOuterMarketInfo.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestStockTimerService.testGetStockIds.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestStockTimerService.testPartion.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Stock_HeiMa [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Stock_HeiMa [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Stock_HeiMa [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Stock_HeiMa [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.stock_backend [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.stock_backend [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.stock_common [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.stock_common [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.stock_common [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.stock_job [org.apache.maven.plugins:maven-compiler-plugin:3.1:compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.stock_job [package].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.JobApp.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.Stock.executor&quot;: &quot;JRebel Debug&quot;,
-    &quot;Spring Boot.StockApp.executor&quot;: &quot;JRebel Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Project/GitHub Project/Stock_HeiMa/stock_common/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;E:/Project/GitHub Project/Stock_HeiMa/stock_job/src/main/java/top/newhand/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.3494253&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;cn.yiiguxing.plugin.translate&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.job/Dockerfile.executor": "Run",
+    "HTTP Request.All in generated-requests.executor": "Run",
+    "JUnit.TestEasyExcel.executor": "Run",
+    "JUnit.TestEasyExcel.test02.executor": "Run",
+    "JUnit.TestPasswordEncoder.executor": "Run",
+    "JUnit.TestPasswordEncoder.testDecode.executor": "Run",
+    "JUnit.TestPasswordEncoder.testPasswordEncoder.executor": "Run",
+    "JUnit.TestRedis.executor": "Run",
+    "JUnit.TestRedis.testRedis.executor": "Run",
+    "JUnit.TestRegular.executor": "Run",
+    "JUnit.TestRegular.testRep2.executor": "Run",
+    "JUnit.TestRestTemplate.executor": "Run",
+    "JUnit.TestRestTemplate.test02.executor": "Run",
+    "JUnit.TestRestTemplate.testRequest.executor": "Run",
+    "JUnit.TestRestTemplate.testRequestWithCookie.executor": "Run",
+    "JUnit.TestRestTemplate.testRequestWithForm.executor": "Run",
+    "JUnit.TestRestTemplate.testRequestWithJson.executor": "Run",
+    "JUnit.TestRestTemplate.testRequestWithParam.executor": "Run",
+    "JUnit.TestStockBusinessMapper.executor": "Run",
+    "JUnit.TestStockService.testGetStockBlockRtIndex.executor": "Run",
+    "JUnit.TestStockService.testGetStockRtIndex.executor": "Run",
+    "JUnit.TestStockTimerService.testGetInnerMarketInfo.executor": "Run",
+    "JUnit.TestStockTimerService.testGetOuterMarketInfo.executor": "Run",
+    "JUnit.TestStockTimerService.testGetStockIds.executor": "Run",
+    "JUnit.TestStockTimerService.testPartion.executor": "Run",
+    "Maven.Stock_HeiMa [clean].executor": "Run",
+    "Maven.Stock_HeiMa [compile].executor": "Run",
+    "Maven.Stock_HeiMa [install].executor": "Run",
+    "Maven.Stock_HeiMa [package].executor": "Run",
+    "Maven.stock_backend [clean].executor": "Run",
+    "Maven.stock_backend [compile].executor": "Run",
+    "Maven.stock_common [compile].executor": "Run",
+    "Maven.stock_common [install].executor": "Run",
+    "Maven.stock_common [package].executor": "Run",
+    "Maven.stock_job [org.apache.maven.plugins:maven-compiler-plugin:3.1:compile].executor": "Run",
+    "Maven.stock_job [package].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.JobApp.executor": "Run",
+    "Spring Boot.Stock.executor": "JRebel Executor",
+    "Spring Boot.StockApp.executor": "JRebel Debug",
+    "git-widget-placeholder": "hexg8236",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Project/GitHub Project/Stock_HeiMa/stock_common/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "E:/Project/GitHub Project/Stock_HeiMa/stock_job/src/main/java/top/newhand/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.3494253",
+    "settings.editor.selected.configurable": "cn.yiiguxing.plugin.translate",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;redis&quot;,
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "redis",
+      "mysql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -286,19 +284,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="job/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="local">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="imageTag" value="stockjob:1.0" />
-          <option name="buildOnly" value="true" />
-          <option name="containerName" value="stockjob" />
-          <option name="sourceFilePath" value="docker/job/Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Docker.job/Dockerfile" />
       <item itemvalue="JUnit.TestEasyExcel" />
       <item itemvalue="JUnit.TestPasswordEncoder" />
       <item itemvalue="JUnit.TestRedis" />
@@ -309,11 +295,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.job/Dockerfile" />
-        <item itemvalue="JUnit.TestPasswordEncoder" />
+        <item itemvalue="JUnit.TestStockBusinessMapper" />
         <item itemvalue="JUnit.TestRedis.testRedis" />
-        <item itemvalue="JUnit.TestEasyExcel" />
         <item itemvalue="JUnit.TestRedis" />
+        <item itemvalue="JUnit.TestPasswordEncoder" />
+        <item itemvalue="JUnit.TestEasyExcel" />
       </list>
     </recent_temporary>
   </component>
@@ -452,11 +438,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/UserServiceImpl.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/StockServiceImpl.java</url>
           <line>185</line>
           <option name="timeStamp" value="13" />
@@ -470,30 +451,6 @@
           <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/StockServiceImpl.java</url>
           <line>382</line>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/controller/UserController.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/UserServiceImpl.java</url>
-          <line>142</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/StockServiceImpl.java</url>
-          <line>141</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserMapper.java</url>
-          <line>29</line>
-          <properties class="top.newhand.stock.mapper.SysUserMapper" method="findByUserName">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/stock_job/src/test/java/top/newhand/stock/TestRestTemplate.java</url>
@@ -523,13 +480,13 @@
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserMapper.java</url>
-          <line>36</line>
-          <properties class="top.newhand.stock.mapper.SysUserMapper" method="getUsers">
+          <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/UserService.java</url>
+          <line>37</line>
+          <properties class="top.newhand.stock.service.UserService" method="getRolesList">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="22" />
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

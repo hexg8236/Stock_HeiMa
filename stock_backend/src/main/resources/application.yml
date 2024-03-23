@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8090
 spring:
   profiles:
     active: cache, stock
@@ -7,7 +7,7 @@ spring:
     druid:
       username: stock
       password: 123456
-      url: jdbc:mysql://127.0.0.1:3306/stock?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://127.0.0.1:13306/stock?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai
       driver-class-name: com.mysql.jdbc.Driver
       # 初始化时建立物理连接的个数。初始化发生在显示调用 init 方法，或者第一次 getConnection 时
       initial-size: 6

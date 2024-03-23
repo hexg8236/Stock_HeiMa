@@ -6,6 +6,7 @@ import top.newhand.stock.vo.R;
 import top.newhand.stock.vo.req.LoginReqVo;
 import top.newhand.stock.vo.resp.LoginRespVo;
 import top.newhand.stock.vo.resp.PageResult;
+import top.newhand.stock.vo.resp.RolesRespVo;
 
 import java.util.Map;
 
@@ -31,4 +32,8 @@ public interface UserService {
     R<Map> getCaptchaCode();
 
     R<PageResult<SysUserDomain>> getUsers(Integer page, Integer pageSize, String username, String nickName, String startTime, String endTime);
+
+    R addUser(SysUserDomain userReqDomain);
+
+    R<RolesRespVo> getRolesList(String userid);
 }

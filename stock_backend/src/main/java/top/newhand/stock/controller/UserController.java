@@ -11,6 +11,7 @@ import top.newhand.stock.vo.R;
 import top.newhand.stock.vo.req.LoginReqVo;
 import top.newhand.stock.vo.resp.LoginRespVo;
 import top.newhand.stock.vo.resp.PageResult;
+import top.newhand.stock.vo.resp.RolesRespVo;
 
 import java.util.Map;
 
@@ -51,9 +52,21 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    @ApiOperation(value = "获取验证码功能", notes = "登录界面获取验证码", response = R.class)
+    @ApiOperation(value = "查询用户列表", notes = "查询用户列表", response = R.class)
     public R<PageResult<SysUserDomain>> getUsers( @RequestBody UserReqDomain userReqDomain){
        return userService.getUsers(userReqDomain.getPageNum(), userReqDomain.getPageSize(), userReqDomain.getUsername(), userReqDomain.getNickName(), userReqDomain.getStartTime(), userReqDomain.getEndTime());
+    }
+
+    @PostMapping("/user")
+    @ApiOperation(value = "新增用户", notes = "添加新用户", response = R.class)
+    public R addUser( @RequestBody SysUserDomain userDomain){
+        return userService.addUser(userDomain);
+    }
+
+    @GetMapping("/roles/{userid}")
+    @ApiOperation(value = "查询用户角色", notes = "查询用户角色", response = R.class)
+    public R<RolesRespVo> getRoles(@PathVariable("userid") String userid) {
+        return userService.getRolesList(userid);
     }
     
 }

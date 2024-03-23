@@ -2,6 +2,8 @@ package top.newhand.stock.mapper;
 
 import top.newhand.stock.pojo.entity.SysUserRole;
 
+import java.util.List;
+
 /**
 * @author hexg8
 * @description 针对表【sys_user_role(用户角色表)】的数据库操作Mapper
@@ -17,6 +19,8 @@ public interface SysUserRoleMapper {
     int insertSelective(SysUserRole record);
 
     SysUserRole selectByPrimaryKey(Long id);
+
+    List<String> selectByPrimaryKeyList(SysUserRole record);
 
     int updateByPrimaryKeySelective(SysUserRole record);
 

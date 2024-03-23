@@ -22,6 +22,9 @@
         from sys_user_role
         where  id = #{id,jdbcType=BIGINT} 
     </select>
+    <select id="selectByPrimaryKeyList" resultType="java.lang.String">
+        select role_id from sys_user_role where user_id = #{}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from sys_user_role

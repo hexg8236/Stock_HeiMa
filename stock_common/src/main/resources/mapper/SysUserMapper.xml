@@ -44,7 +44,7 @@
         where username = #{name}
     </select>
 
-    <select id="getUsers" resultType="top.newhand.stock.pojo.domain.SysUserDomain">
+    <select id="selectUsers" resultType="top.newhand.stock.pojo.domain.SysUserDomain">
         SELECT
         id,username,password,phone,real_name,
         nick_name,email,status,sex,deleted,
