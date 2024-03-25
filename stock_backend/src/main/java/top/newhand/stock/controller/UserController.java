@@ -6,13 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.newhand.stock.pojo.domain.SysUserDomain;
 import top.newhand.stock.pojo.domain.UserReqDomain;
+import top.newhand.stock.pojo.entity.SysRole;
 import top.newhand.stock.service.UserService;
 import top.newhand.stock.vo.R;
 import top.newhand.stock.vo.req.LoginReqVo;
 import top.newhand.stock.vo.resp.LoginRespVo;
 import top.newhand.stock.vo.resp.PageResult;
-import top.newhand.stock.vo.resp.RolesRespVo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -63,10 +66,21 @@ public class UserController {
         return userService.addUser(userDomain);
     }
 
-    @GetMapping("/roles/{userid}")
+    @GetMapping("/user/roles/{userid}")
     @ApiOperation(value = "查询用户角色", notes = "查询用户角色", response = R.class)
-    public R<RolesRespVo> getRoles(@PathVariable("userid") String userid) {
-        return userService.getRolesList(userid);
+    public R<Map<String, List>> getRoles(@PathVariable("userid") String userid) {
+        Map<String, List> rolesList = new HashMap<>();
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("123");
+        rolesList.put("ownRoleIds", strings);
+        ArrayList<SysRole> sysUsers = new ArrayList<>();
+        SysRole role = new SysRole();
+        role.setId(123L);
+        role.setName("超级管理员");
+        role.setDescription("超级管理员");
+        sysUsers.add(role);
+        rolesList.put("allRole", sysUsers);
+        return R.ok(rolesList);
     }
     
 }

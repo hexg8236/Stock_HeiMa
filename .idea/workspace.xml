@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8035e72c-3d9d-4a7c-8479-8a5a25923e8f" name="Changes" comment="今日指数其余功能开发">
-      <change afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/vo/resp/RolesRespVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8035e72c-3d9d-4a7c-8479-8a5a25923e8f" name="Changes" comment="今日指数用户界面开发">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9c2f14b9-caf0-479d-93c9-112e33cce5af.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9c2f14b9-caf0-479d-93c9-112e33cce5af.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_backend/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysUserRoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysUserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/java/top/newhand/stock/mapper/SysRoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysRoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysRoleMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysUserRoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/stock_common/src/main/resources/mapper/SysUserRoleMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="hexg8236" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -138,9 +135,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.JobApp.executor": "Run",
-    "Spring Boot.Stock.executor": "JRebel Executor",
+    "Spring Boot.Stock.executor": "Run",
     "Spring Boot.StockApp.executor": "JRebel Debug",
-    "git-widget-placeholder": "hexg8236",
+    "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "1.8",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "E:/Project/GitHub Project/Stock_HeiMa/stock_common/src/main/resources",
@@ -329,6 +326,9 @@
       <workItem from="1709376526761" duration="915000" />
       <workItem from="1709378620064" duration="9251000" />
       <workItem from="1709802425736" duration="522000" />
+      <workItem from="1711153413808" duration="1611000" />
+      <workItem from="1711164111523" duration="2006000" />
+      <workItem from="1711326042263" duration="1280000" />
     </task>
     <task id="LOCAL-00001" summary="初始化仓库，创建相应表，提交相应代码">
       <option name="closed" value="true" />
@@ -394,7 +394,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708607667187</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="今日指数用户界面开发">
+      <option name="closed" value="true" />
+      <created>1711153428870</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1711153428870</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,7 +440,8 @@
     <MESSAGE value="RabiitMq配置" />
     <MESSAGE value="今日指数 Job数据采集模块开发&#10;以及Bug修改" />
     <MESSAGE value="今日指数开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="今日指数开发" />
+    <MESSAGE value="今日指数用户界面开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="今日指数用户界面开发" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -478,15 +487,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/stock_backend/src/main/java/top/newhand/stock/service/UserService.java</url>
-          <line>37</line>
-          <properties class="top.newhand.stock.service.UserService" method="getRolesList">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -2,6 +2,8 @@ package top.newhand.stock.mapper;
 
 import top.newhand.stock.pojo.entity.SysRole;
 
+import java.util.List;
+
 /**
 * @author hexg8
 * @description 针对表【sys_role(角色表)】的数据库操作Mapper
@@ -21,5 +23,13 @@ public interface SysRoleMapper {
     int updateByPrimaryKeySelective(SysRole record);
 
     int updateByPrimaryKey(SysRole record);
+
+    /**
+     * @description TODO 查询角色列表根据条件
+     * @date 2024/3/23 11:29
+     * @param record
+     * @return java.util.List<top.newhand.stock.pojo.entity.SysRole>
+     */
+    List<SysRole> selectRolesByUserSysRole(SysRole record);
 
 }

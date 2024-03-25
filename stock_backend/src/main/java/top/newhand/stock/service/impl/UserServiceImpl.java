@@ -19,6 +19,7 @@ import top.newhand.stock.mapper.SysRolePermissionMapper;
 import top.newhand.stock.mapper.SysUserMapper;
 import top.newhand.stock.mapper.SysUserRoleMapper;
 import top.newhand.stock.pojo.domain.SysUserDomain;
+import top.newhand.stock.pojo.entity.SysRole;
 import top.newhand.stock.pojo.entity.SysUser;
 import top.newhand.stock.pojo.entity.SysUserRole;
 import top.newhand.stock.service.UserService;
@@ -181,10 +182,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public R<RolesRespVo> getRolesList(String userid) {
+    public RolesRespVo getRolesList(String userid) {
         long longUserId = Long.parseLong(userid);
         RolesRespVo respVo = new RolesRespVo();
         SysUserRole sysUserRole = sysUserRoleMapper.selectByPrimaryKey(longUserId);
+        List<SysRole> sysRoles = sysRoleMapper.selectRolesByUserSysRole(new SysRole());
         return null;
     }
 }

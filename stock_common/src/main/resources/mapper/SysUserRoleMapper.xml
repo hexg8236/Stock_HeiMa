@@ -20,15 +20,15 @@
         select
         <include refid="Base_Column_List" />
         from sys_user_role
-        where  id = #{id,jdbcType=BIGINT} 
+        where  id = #{id,jdbcType=BIGINT}
     </select>
     <select id="selectByPrimaryKeyList" resultType="java.lang.String">
-        select role_id from sys_user_role where user_id = #{}
+        select role_id from sys_user_role
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from sys_user_role
-        where  id = #{id,jdbcType=BIGINT} 
+        where  id = #{id,jdbcType=BIGINT}
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.newhand.stock.pojo.entity.SysUserRole" useGeneratedKeys="true">
         insert into sys_user_role
@@ -65,14 +65,14 @@
                     create_time = #{createTime,jdbcType=TIMESTAMP},
                 </if>
         </set>
-        where   id = #{id,jdbcType=BIGINT} 
+        where   id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="top.newhand.stock.pojo.entity.SysUserRole">
         update sys_user_role
-        set 
+        set
             user_id =  #{userId,jdbcType=BIGINT},
             role_id =  #{roleId,jdbcType=BIGINT},
             create_time =  #{createTime,jdbcType=TIMESTAMP}
-        where   id = #{id,jdbcType=BIGINT} 
+        where   id = #{id,jdbcType=BIGINT}
     </update>
 </mapper>

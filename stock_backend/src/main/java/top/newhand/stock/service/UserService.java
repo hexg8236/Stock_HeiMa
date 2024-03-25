@@ -35,5 +35,5 @@ public interface UserService {
 
     R addUser(SysUserDomain userReqDomain);
 
-    R<RolesRespVo> getRolesList(String userid);
+    RolesRespVo getRolesList(String userid);
 }

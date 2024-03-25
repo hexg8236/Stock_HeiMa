@@ -26,6 +26,18 @@
         from sys_role
         where  id = #{id,jdbcType=BIGINT} 
     </select>
+    <select id="selectRolesByUserSysRole" resultType="top.newhand.stock.pojo.entity.SysRole">
+        select
+        <include refid="Base_Column_List" />
+        from sys_role
+        <where>
+            deleted = '1'
+            <if test="id != null">and id = #{id,jdbcType=BIGINT}</if>
+            <if test="name != null">and name = #{name,jdbcType=VARCHAR}</if>
+            <if test="description != null">and description = #{description,jdbcType=VARCHAR}</if>
+            <if test="status != null">and status = #{status,jdbcType=TINYINT}</if>
+        </where>
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from sys_role
